@@ -18,8 +18,10 @@ function Card(props) {
     </div>
   );
 
-  $(cardElement).draggable({ handle: dragElement, containment: "html" });
-
+  $(cardElement).draggable({
+    handle: dragElement,
+    containment: "body",
+  });
   return cardElement;
 }
 

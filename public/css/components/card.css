@@ -1,10 +1,11 @@
 div.au-card {
-  border-radius: 0.5rem;
+  position: absolute !important;
   width: min-content;
-  overflow: hidden;
   margin: .25rem;
-  background-color: var(--surface-color);
   border: 2px solid var(--on-surface-color);
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background-color: var(--surface-color);
 }
 
 div.au-card div.au-drag-card {
@@ -18,6 +19,6 @@ div.au-card div.au-main-card {
   display: flex;
   padding: 0.75rem 1.5rem;
   align-items: center;
-  flex-direction: column;
   justify-content: space-between;
+  flex-direction: column;
 }
