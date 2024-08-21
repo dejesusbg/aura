@@ -1,0 +1,38 @@
+header {
+  display: flex;
+  width: calc(100% - 3.5rem);
+  height: 10rem;
+  padding: 0.25rem 2rem 0.25rem 1.5rem;
+  z-index: -1;
+  align-items: center;
+  justify-content: space-between;
+  top: 0;
+  left: 0;
+  gap: 1rem;
+  background-color: inherit;
+}
+
+header > section {
+  display: flex;
+}
+
+header > section.au-header-leading > img {
+  height: 6rem;
+}
+
+header > section.au-header-leading > img:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+  opacity: 0.8;
+  transition-duration: 0.1s;
+}
+
+header > section.au-header-trailing {
+  justify-content: end;
+  flex-direction: column;
+  margin-left: auto;
+}
+
+header > section.au-header-trailing > span {
+  text-align: end;
+}

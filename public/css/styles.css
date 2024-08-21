@@ -1,0 +1,29 @@
+@import url("typography.css");
+
+@import url("components/header.css");
+@import url("components/button.css");
+@import url("components/container.css");
+@import url("components/card.css");
+@import url("components/footer.css");
+
+:root {
+  -webkit-user-select: none;
+  user-select: none;
+
+  --surface-color: #f0ece1;
+  --on-surface-color: #1c1717;
+  --container-color: #b8efc6;
+  --on-container-color: #113115;
+  --hover-color: rgba(0, 0, 0, 0.1);
+}
+
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background-color: var(--surface-color);
+  color: var(--on-surface-color);
+  height: calc(100% - 6rem);
+}

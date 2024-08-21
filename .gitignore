@@ -1,0 +1,4 @@
+/node_modules
+/.vscode
+public/css/colour.css
+public/js/bundle.js
