@@ -17,6 +17,10 @@ header > section {
 }
 
 header > section.au-header-leading > img {
+  padding: 1.5rem 1rem 1.5rem 0;
+}
+
+header > section.au-header-leading > img {
   height: 6rem;
 }
 
@@ -30,7 +34,6 @@ header > section.au-header-leading > img:hover {
 header > section.au-header-trailing {
   justify-content: end;
   flex-direction: column;
-  margin-left: auto;
 }
 
 header > section.au-header-trailing > span {

@@ -2,7 +2,12 @@ class MainModel {
   constructor() {
     this.data = {
       balance: 750,
-      notes: "Hello, world!",
+      notes: [
+        {
+          title: "title",
+          body: "hello owo",
+        },
+      ],
     };
   }
 

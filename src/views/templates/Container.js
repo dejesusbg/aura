@@ -5,18 +5,8 @@ import Card from "./Card";
 /** @jsxFrag createFragment */
 
 function Container(props) {
-  return (
-    <main>
-      <Card text={props.data} />
-      <Card text={props.data} />
-      <Card text={props.data} />
-      <Card text={props.data} />
-      <Card text={props.data} />
-      <Card text={props.data} />
-      <Card text={props.data} />
-      <Card text={props.data} />
-    </main>
-  );
+  let allCards = props.data.map((data) => <Card data={data} />);
+  return <main>{allCards}</main>;
 }
 
 export default Container;

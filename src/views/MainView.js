@@ -23,13 +23,18 @@ class MainView {
   }
 
   renderFooter() {
-    const appFooter = <Footer />;
+    const appFooter = <Footer container={this.container} />;
     return appFooter;
   }
 
   render() {
     const body = $("body");
-    body.prepend(this.renderHeader(), this.renderContainer(), this.renderFooter());
+
+    this.header = this.renderHeader();
+    this.container = this.renderContainer();
+    this.footer = this.renderFooter();
+
+    body.prepend(this.header, this.container, this.footer);
   }
 }
 

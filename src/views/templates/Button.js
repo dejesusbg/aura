@@ -9,7 +9,7 @@ function Button(props) {
       textClass = props.type == "icon" ? "material-symbols-rounded" : "au-text-button";
 
     return (
-      <button class={buttonClass} type="button">
+      <button class={buttonClass} type="button" onClick={props.onClick}>
         <span class={textClass}>{props.text}</span>
       </button>
     );

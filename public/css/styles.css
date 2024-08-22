@@ -6,7 +6,7 @@
 @import url("components/card.css");
 @import url("components/footer.css");
 
-:root {
+/* :root {
   -webkit-user-select: none;
   user-select: none;
 
@@ -15,6 +15,19 @@
   --container-color: #b8efc6;
   --on-container-color: #113115;
   --hover-color: rgba(0, 0, 0, 0.1);
+} */
+
+:root {
+  -webkit-user-select: none;
+  user-select: none;
+
+  --surface-color: #fef1e7;
+  --on-surface-color: #1c1717;
+  --container-color: #537f56;
+  --on-container-color: #ebfff6;
+  --card-color: #ffebc5;
+  --on-card-color: #333333;
+  --hover-color: rgba(0, 0, 0, 0.15);
 }
 
 html {

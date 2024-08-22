@@ -9,14 +9,33 @@
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48 !important;
 }
 
-.au-text-xl {
+@media screen and (max-width: 600px) {
+  :root {
+    font-size: 90%;
+  }
+  
+}
+
+.au-text-xxl {
   font-size: 4rem;
   font-weight: 600;
   line-height: 4.5rem;
+}
+
+.au-text-m {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 2rem;
 }
 
 .au-text-s {
   font-size: 1.25rem;
   font-weight: 300;
   line-height: 1.5rem;
+}
+
+.au-text-xs {
+  font-size: 0.75rem;
+  font-weight: 300;
+  line-height: 1rem;
 }
