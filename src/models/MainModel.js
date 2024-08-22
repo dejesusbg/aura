@@ -5,7 +5,7 @@ class MainModel {
       notes: [
         {
           title: "title",
-          body: "hello owo",
+          body: "hello, how are u?",
         },
       ],
     };

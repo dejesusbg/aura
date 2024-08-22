@@ -28,6 +28,7 @@
   --card-color: #ffebc5;
   --on-card-color: #333333;
   --hover-color: rgba(0, 0, 0, 0.15);
+  --aura-color: rgba(255, 161, 48, 0.4);
 }
 
 html {

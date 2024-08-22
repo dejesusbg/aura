@@ -1,8 +1,8 @@
 header {
   display: flex;
-  width: calc(100% - 3.5rem);
+  width: calc(100% - 2rem);
   height: 10rem;
-  padding: 0.25rem 2rem 0.25rem 1.5rem;
+  padding: 0.25rem 2rem 0.25rem 0;
   z-index: -1;
   align-items: center;
   justify-content: space-between;
@@ -17,17 +17,19 @@ header > section {
 }
 
 header > section.au-header-leading > img {
-  padding: 1.5rem 1rem 1.5rem 0;
+  padding: 1.5rem;
 }
 
 header > section.au-header-leading > img {
   height: 6rem;
 }
 
-header > section.au-header-leading > img:hover {
-  transform: scale(1.2);
-  cursor: pointer;
+header > section.au-drop-header {
   opacity: 0.8;
+  cursor: pointer;
+  box-shadow: inset 0 0 4rem 4rem var(--aura-color), 0 0 3rem 3rem var(--aura-color);
+  transform: scale(1.2);
+  border-radius: 100%;
   transition-duration: 0.1s;
 }
 

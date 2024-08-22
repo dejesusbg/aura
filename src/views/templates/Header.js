@@ -19,8 +19,17 @@ function Header(props) {
     const dropElement = <DropHeader />;
 
     $(dropElement).droppable({
-      drop: (event, ui) => {
+      over: (e, ui) => {
+        $(dropElement).addClass("au-drop-header");
+      },
+
+      out: (e, ui) => {
+        $(dropElement).removeClass("au-drop-header");
+      },
+
+      drop: (e, ui) => {
         ui.draggable.remove();
+        $(dropElement).removeClass("au-drop-header");
       },
     });
 
