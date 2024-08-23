@@ -43,15 +43,10 @@ function Footer(props) {
       props.container.appendChild(<Card data={cardContent} />);
     };
 
-    const shuffleCards = () => {
-      
-    };
-
     return (
       <footer>
         <span>aura</span>
         <Button type="icon" text="add" onClick={addCard} />
-        <Button type="icon" text="shuffle" />
         {Object.keys(navs).map((path) => (path !== location && navs[path]) || "")}
       </footer>
     );
