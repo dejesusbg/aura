@@ -2,7 +2,7 @@ header {
   display: flex;
   width: calc(100% - 2rem);
   height: 10rem;
-  padding: 0.25rem 2rem 0.25rem 0;
+  padding: 0.25rem 2.25rem 0.25rem .5rem;
   z-index: -1;
   align-items: center;
   justify-content: space-between;
@@ -17,20 +17,34 @@ header > section {
 }
 
 header > section.au-header-leading > img {
+  height: 6rem;
   padding: 1.5rem;
 }
 
-header > section.au-header-leading > img {
-  height: 6rem;
+header > section.au-header-leading:not(.au-drop-header) {
+  transform: scale(1);
+  transition-duration: 0.25s;
 }
 
 header > section.au-drop-header {
-  opacity: 0.8;
   cursor: pointer;
-  box-shadow: inset 0 0 4rem 4rem var(--aura-color), 0 0 3rem 3rem var(--aura-color);
-  transform: scale(1.2);
+  animation: dropShadow 1s infinite 0.5s;
+  box-shadow: inset 0 0 3rem 3rem var(--aura-color), 0 0 0.75rem 0.75rem var(--aura-color);
+  transform: scale(0.85);
   border-radius: 100%;
-  transition-duration: 0.1s;
+  transition-duration: 0.25s;
+}
+
+@keyframes dropShadow {
+  0% {
+    box-shadow: inset 0 0 3rem 3rem var(--aura-color), 0 0 0.75rem 0.75rem var(--aura-color);
+  }
+  50% {
+    box-shadow: inset 0 0 3rem 3rem var(--aura-color), 0 0 1rem 1rem var(--aura-color);
+  }
+  100% {
+    box-shadow: inset 0 0 3rem 3rem var(--aura-color), 0 0 0.75rem 0.75rem var(--aura-color);
+  }
 }
 
 header > section.au-header-trailing {

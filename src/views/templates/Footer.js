@@ -43,6 +43,10 @@ function Footer(props) {
       props.container.appendChild(<Card data={cardContent} />);
     };
 
+    const shuffleCards = () => {
+      
+    };
+
     return (
       <footer>
         <span>aura</span>

@@ -31,6 +31,8 @@ function Header(props) {
         ui.draggable.remove();
         $(dropElement).removeClass("au-drop-header");
       },
+
+      tolerance: "touch",
     });
 
     return (

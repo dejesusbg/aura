@@ -22,7 +22,14 @@ function Card(props) {
       </div>
     );
 
-    $(cardElement).draggable({ handle: dragElement, containment: "body" });
+    $(cardElement).draggable({
+      handle: dragElement,
+      containment: "window",
+      opacity: 0.8,
+      stop: (ev, ui) => {
+        $(".ui-droppable").removeClass("au-drop-header");
+      },
+    });
 
     return cardElement;
   }
