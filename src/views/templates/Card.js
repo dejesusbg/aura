@@ -16,8 +16,8 @@ function Card(props) {
       <div class="au-card">
         {dragElement}
         <div class="au-main-card">
-          <span class="au-text-m">{props.data.title}</span>
-          <span class="au-text-xs">{props.data.body}</span>
+          <span class="au-text-m">{props.data.name}</span>
+          <span class="au-text-xs">{props.data.description}</span>
         </div>
       </div>
     );

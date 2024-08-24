@@ -1,4 +1,8 @@
-import MainController from './controllers/MainController.js';
+import MainController from "./controllers/MainController";
 
-const app = new MainController();
-app.init();
+import dataSource from "./models/DataSource";
+
+dataSource.getDBInstance().then((db) => {
+  const app = new MainController(db);
+  app.init();
+});

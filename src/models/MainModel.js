@@ -1,17 +1,20 @@
+import HabitController from "../controllers/mdbHabit";
+import HabitCompletionController from "../controllers/mdbHabitCompletion";
+import RewardController from "../controllers/mdbReward";
+import RedemptionController from "../controllers/mdbRedemption";
+
 class MainModel {
   constructor() {
-    this.data = {
-      balance: 750,
-      notes: [
-        {
-          title: "title",
-          body: "hello, how are u?",
-        },
-      ],
-    };
+    this.data = null;
   }
 
-  getData() {
+  getData(db) {
+    // HabitController.createHabit(db, "Habit 1", "Habit 1 description", 1, 10);
+
+    this.data = {
+      habits: HabitController.getAllHabits(db).then(),
+    };
+
     return this.data;
   }
 }

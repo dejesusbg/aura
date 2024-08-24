@@ -1,5 +1,10 @@
 import { createElement, createFragment } from "./Render";
 
+import HabitController from "../controllers/mdbHabit";
+import HabitCompletionController from "../controllers/mdbHabitCompletion";
+import RewardController from "../controllers/mdbReward";
+import RedemptionController from "../controllers/mdbRedemption";
+
 import Header from "./templates/Header";
 import Container from "./templates/Container";
 import Footer from "./templates/Footer";
@@ -10,15 +15,16 @@ import Footer from "./templates/Footer";
 class MainView {
   constructor(data) {
     this.data = data;
+    this.balance = 750;
   }
 
   renderHeader() {
-    const appHeader = <Header balance={this.data.balance} />;
+    const appHeader = <Header balance={this.balance} />;
     return appHeader;
   }
 
   renderContainer() {
-    const appContainer = <Container data={this.data.notes} />;
+    const appContainer = <Container data={this.data.habits} />;
     return appContainer;
   }
 
@@ -27,7 +33,7 @@ class MainView {
     return appFooter;
   }
 
-  render() {
+  render(db) {
     const body = $("body");
 
     this.header = this.renderHeader();

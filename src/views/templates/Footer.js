@@ -17,24 +17,24 @@ function Footer(props) {
 
     const cardContents = [
       {
-        title: "attend a uni fair",
-        body: "+5 pts",
+        name: "attend a uni fair",
+        description: "+5 pts",
       },
       {
-        title: "join a college club",
-        body: "+10 pts",
+        name: "join a college club",
+        description: "+10 pts",
       },
       {
-        title: "volunteer in your community",
-        body: "+15 pts",
+        name: "volunteer in your community",
+        description: "+15 pts",
       },
       {
-        title: "achieve a high GPA",
-        body: "+20 pts",
+        name: "achieve a high GPA",
+        description: "+20 pts",
       },
       {
-        title: "get a part-time job",
-        body: "+10 pts",
+        name: "get a part-time job",
+        description: "+10 pts",
       },
     ];
 

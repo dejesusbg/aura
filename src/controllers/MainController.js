@@ -1,10 +1,10 @@
-import MainModel from "../models/MainModel.js";
-import MainView from "../views/MainView.js";
+import MainModel from "../models/MainModel";
+import MainView from "../views/MainView";
 
 class MainController {
-  constructor() {
+  constructor(db) {
     this.model = new MainModel();
-    this.view = new MainView(this.model.getData());
+    this.view = new MainView(this.model.getData(db));
   }
 
   init() {
