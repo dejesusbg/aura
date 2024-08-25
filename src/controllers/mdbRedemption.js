@@ -1,8 +1,13 @@
 import Redemption from "../models/Redemption";
+import Reward from "../models/Reward";
+
+var base62 = require("base62");
 
 class RedemptionController {
-  static async createRedemption(db, reward_id, points_spent) {
-    const redemption = new Redemption(Date.now(), reward_id, new Date(), points_spent);
+  static async createRedemption(db, reward_id) {
+    const reward = await Reward.getById(db, reward_id);
+
+    const redemption = new Redemption(base62.encode(Date.now()), reward_id, new Date(), reward.points_required);
     await Redemption.save(db, redemption);
     
     return redemption;

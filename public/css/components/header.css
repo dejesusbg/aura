@@ -2,7 +2,7 @@ header {
   display: flex;
   width: calc(100% - 2rem);
   height: 10rem;
-  padding: 0.25rem 2.25rem 0.25rem .5rem;
+  padding: 0.25rem 2.25rem 0.25rem 0.5rem;
   z-index: -1;
   align-items: center;
   justify-content: space-between;
@@ -27,7 +27,6 @@ header > section.au-header-leading:not(.au-drop-header) {
 }
 
 header > section.au-drop-header {
-  cursor: pointer;
   animation: dropShadow 1s infinite 0.5s;
   box-shadow: inset 0 0 3rem 3rem var(--aura-color), 0 0 0.75rem 0.75rem var(--aura-color);
   transform: scale(0.85);
@@ -52,6 +51,14 @@ header > section.au-header-trailing {
   flex-direction: column;
 }
 
+header > section.au-header-leading:not(.ui-droppable) + section.au-header-trailing {
+  padding-right: 0.5rem;
+}
+
 header > section.au-header-trailing > span {
   text-align: end;
+}
+
+header > section.au-header-trailing > span.au-text-xxl {
+  height: 4.5rem;
 }

@@ -1,8 +1,10 @@
 import Reward from "../models/Reward";
 
+var base62 = require("base62");
+
 class RewardController {
   static async createReward(db, name, description, points_required) {
-    const reward = new Reward(Date.now(), name, description, points_required);
+    const reward = new Reward(base62.encode(Date.now()), name, description, points_required);
     await Reward.save(db, reward);
 
     return reward;

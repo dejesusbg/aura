@@ -13,29 +13,35 @@
   :root {
     font-size: 90%;
   }
-  
 }
 
+h1,
 .au-text-xxl {
+  line-height: 4.5rem;
   font-size: 4rem;
   font-weight: 600;
-  line-height: 4.5rem;
 }
 
 .au-text-m {
+  line-height: 2rem;
   font-size: 1.5rem;
   font-weight: 500;
-  line-height: 2rem;
 }
 
 .au-text-s {
+  line-height: 1.5rem;
   font-size: 1.25rem;
   font-weight: 300;
-  line-height: 1.5rem;
 }
 
 .au-text-xs {
+  line-height: 1rem;
   font-size: 0.75rem;
   font-weight: 300;
-  line-height: 1rem;
+}
+
+.au-text-button {
+  font-family: "Excon-Variable", "sans serif";
+  font-weight: 600;
+  font-size: 1rem;
 }

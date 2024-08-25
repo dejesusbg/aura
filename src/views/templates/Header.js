@@ -12,11 +12,36 @@ function DropHeader() {
 }
 
 function Header(props) {
-  if (props) {
-    const balanceSign = props.balance > 0 ? "+" : "-";
-    const balanceText = balanceSign + props.balance;
+  const dropElement = <DropHeader />;
 
-    const dropElement = <DropHeader />;
+  const headerElement = (
+    <header>
+      {dropElement}
+      <section class="au-header-trailing">
+        <span id="au-header-balance" class="au-text-xxl"></span>
+        <span class="au-text-s">points</span>
+      </section>
+    </header>
+  );
+
+  if (props) {
+    let balance = 0;
+
+    Promise.all([
+      props.data.completions.then((data) => {
+        data.forEach((completion) => (balance += completion.points_earned));
+      }),
+      props.data.redemptions.then((data) => {
+        data.forEach((redemption) => (balance -= redemption.points_spent));
+      }),
+    ]).then(() => {
+      const balanceElement = $("#au-header-balance");
+
+      const balanceSign = balance > 0 ? "+" : "-";
+      const balanceText = balance == 0 ? "ツ" : balanceSign + balance;
+
+      balanceElement.text(balanceText);
+    });
 
     $(dropElement).droppable({
       over: (e, ui) => {
@@ -28,23 +53,19 @@ function Header(props) {
       },
 
       drop: (e, ui) => {
-        ui.draggable.remove();
+        const card = ui.draggable;
+
         $(dropElement).removeClass("au-drop-header");
+
+        card.remove();
+        props.addCompletion(card.attr("id"));
       },
 
       tolerance: "touch",
     });
-
-    return (
-      <header>
-        {dropElement}
-        <section class="au-header-trailing">
-          <span class="au-text-xxl">{balanceText}</span>
-          <span class="au-text-s">points</span>
-        </section>
-      </header>
-    );
   }
+
+  return headerElement;
 }
 
 export default Header;

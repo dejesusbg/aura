@@ -9,10 +9,11 @@ class MainModel {
   }
 
   getData(db) {
-    // HabitController.createHabit(db, "Habit 1", "Habit 1 description", 1, 10);
-
     this.data = {
       habits: HabitController.getAllHabits(db).then(),
+      rewards: RewardController.getAllRewards(db).then(),
+      completions: HabitCompletionController.getAllCompletions(db).then(),
+      redemptions: RedemptionController.getAllRedemptions(db).then(),
     };
 
     return this.data;

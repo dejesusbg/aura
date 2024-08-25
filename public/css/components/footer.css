@@ -2,7 +2,7 @@ footer {
   display: flex;
   position: fixed;
   height: 3rem;
-  padding: 0 1rem 0 1.5rem;
+  padding: 0 1rem 0 1.2rem;
   color: var(--on-container-color);
   align-items: center;
   justify-content: center;
@@ -10,11 +10,6 @@ footer {
   right: 1rem;
   border-radius: 1rem;
   background-color: var(--container-color);
-}
-
-footer > span {
-  font-weight: 600;
-  margin-right: 0.5rem;
 }
 
 footer > button > span {

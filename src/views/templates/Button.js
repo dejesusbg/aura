@@ -8,6 +8,12 @@ function Button(props) {
     const buttonClass = "au-button-" + props.type,
       textClass = props.type == "icon" ? "material-symbols-rounded" : "au-text-button";
 
+    if (props.href) {
+      props.onClick = () => {
+        window.location.href = props.href;
+      };
+    }
+
     return (
       <button class={buttonClass} type="button" onClick={props.onClick}>
         <span class={textClass}>{props.text}</span>

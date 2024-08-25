@@ -6,12 +6,14 @@ import Card from "./Card";
 
 function Container(props) {
   const mainElement = <main></main>;
-  
-  props.data.then((data) => {
-    const allCards = data.map((data) => <Card data={data} />);
-    mainElement.append(...allCards);
-  });
-  
+
+  if (props) {
+    props.data.then((data) => {
+      const allCards = data.map((data) => <Card data={data} />);
+      mainElement.append(...allCards);
+    });
+  }
+
   return mainElement;
 }
 
