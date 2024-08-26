@@ -9,20 +9,22 @@ function CardDrag() {
 }
 
 function Card(props) {
+  const dragElement = <CardDrag />;
+
   if (props) {
-    const isHabit = props.data.habit_id ? true : false;
+    let { habit_id, reward_id, name, description } = props.data;
 
-    const id = (props.data.habit_id ?? props.data.reward_id) + "";
-    const idName = isHabit ? "h" : "r";
+    const id = (habit_id ?? reward_id) + "";
+    const type = habit_id ? "habit" : "reward";
 
-    const dragElement = <CardDrag />;
+    const handleEdit = () => (window.location.href = `/edit?${type}=${id}`);
 
     const cardElement = (
       <div id={id} class="au-card">
         {dragElement}
-        <div class="au-main-card" onClick={() => (window.location.href = "/edit?q=" + id + idName)}>
-          <span class="au-text-m">{props.data.name}</span>
-          <span class="au-text-xs">{props.data.description}</span>
+        <div class="au-main-card" onClick={handleEdit}>
+          <span class="au-text-m">{name}</span>
+          {description && <span class="au-text-xs">{description}</span>}
         </div>
       </div>
     );
@@ -31,8 +33,12 @@ function Card(props) {
       handle: dragElement,
       containment: "window",
       opacity: 0.8,
+      create: (ev, ui) => {
+        localStorage.getItem(id) && $(cardElement).css(JSON.parse(localStorage.getItem(id)));
+      },
       stop: (ev, ui) => {
         $(".ui-droppable").removeClass("au-drop-header");
+        localStorage.setItem(id, JSON.stringify(ui.position));
       },
     });
 

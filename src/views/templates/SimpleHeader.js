@@ -11,7 +11,7 @@ function SimpleHeader(props) {
           <img src="images/logo.png" alt="logo"></img>
         </section>
         <section class="au-header-trailing">
-          <span id="au-header-balance" class="au-text-xxl">
+          <span id="au-header-balance" class="au-text-xl">
             {props.name}
           </span>
         </section>

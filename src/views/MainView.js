@@ -23,7 +23,7 @@ class MainView {
 
   renderHeader() {
     const addCompletion = (...args) => {
-      HabitCompletionController.createCompletion(this.db, ...args);
+      return HabitCompletionController.createCompletion(this.db, ...args);
     };
 
     const appHeader = <Header data={this.data} addCompletion={addCompletion} />;
@@ -47,18 +47,28 @@ class MainView {
   }
 
   renderFooter() {
-    const isDefault = this.path == "/";
-
-    const addCard = (...args) => {
-      isDefault ? HabitController.createHabit(this.db, ...args) : RewardController.createReward(this.db, ...args);
-    };
-
-    const appFooter = <Footer container={this.container} addCard={addCard} />;
+    const appFooter = <Footer container={this.container} />;
     return appFooter;
   }
 
   renderEdit() {
-    const appEdit = <Edit />;
+    const addCard = (isDefault = true, ...args) => {
+      return isDefault
+        ? HabitController.createHabit(this.db, ...args)
+        : RewardController.createReward(this.db, ...args);
+    };
+
+    const getCard = (isDefault = true, ...args) => {
+      return isDefault ? HabitController.getHabit(this.db, ...args) : RewardController.getReward(this.db, ...args);
+    };
+
+    const updateCard = (isDefault = true, ...args) => {
+      return isDefault
+        ? HabitController.updateHabit(this.db, ...args)
+        : RewardController.updateReward(this.db, ...args);
+    };
+
+    const appEdit = <Edit addCard={addCard} updateCard={updateCard} getCard={getCard} />;
     return appEdit;
   }
 
@@ -66,7 +76,7 @@ class MainView {
   renderHistory() {}
   renderHome() {}
 
-  render(db) {
+  render() {
     const location = window.location.pathname;
 
     let thisView = [];

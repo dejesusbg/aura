@@ -1,10 +1,10 @@
-import Reward from "../models/Reward";
+import UniqueID from "./UniqueID";
 
-var base62 = require("base62");
+import Reward from "../models/Reward";
 
 class RewardController {
   static async createReward(db, name, description, points_required) {
-    const reward = new Reward(base62.encode(Date.now()), name, description, points_required);
+    const reward = new Reward(UniqueID(), name, description, points_required);
     await Reward.save(db, reward);
 
     return reward;

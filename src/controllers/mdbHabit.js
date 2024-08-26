@@ -1,10 +1,10 @@
-import Habit from "../models/Habit";
+import UniqueID from "./UniqueID";
 
-var base62 = require("base62");
+import Habit from "../models/Habit";
 
 class HabitController {
   static async createHabit(db, name, description, frequency, points) {
-    const habit = new Habit(base62.encode(Date.now()), name, description, frequency, points);
+    const habit = new Habit(UniqueID(), name, description, frequency, points);
     await Habit.save(db, habit);
 
     return habit;

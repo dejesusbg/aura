@@ -11,7 +11,7 @@ class DataSource {
 
   openDB() {
     return new Promise((resolve, reject) => {
-      const request = indexedDB.open("AuraDB", 1);
+      const request = indexedDB.open("AuraDB", 1);  
 
       request.onerror = (event) => {
         console.error("Database error:", event.target.error);

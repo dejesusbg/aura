@@ -5,18 +5,16 @@ import { createElement, createFragment } from "../Render";
 
 function Button(props) {
   if (props) {
-    const buttonClass = "au-button-" + props.type,
-      textClass = props.type == "icon" ? "material-symbols-rounded" : "au-text-button";
+    var { type, text, onClick, href } = props;
 
-    if (props.href) {
-      props.onClick = () => {
-        window.location.href = props.href;
-      };
-    }
+    const btnClass = `au-button-${type}`;
+    const txtClass = type === "icon" ? "material-symbols-rounded" : "au-text-button";
+
+    href && (onClick = () => (window.location.href = href));
 
     return (
-      <button class={buttonClass} type="button" onClick={props.onClick}>
-        <span class={textClass}>{props.text}</span>
+      <button class={btnClass} type="button" onClick={onClick}>
+        <span class={txtClass}>{text}</span>
       </button>
     );
   }

@@ -25,40 +25,35 @@ function Header(props) {
   );
 
   if (props) {
-    let balance = 0;
+    var pts = 0;
 
     Promise.all([
-      props.data.completions.then((data) => {
-        data.forEach((completion) => (balance += completion.points_earned));
-      }),
-      props.data.redemptions.then((data) => {
-        data.forEach((redemption) => (balance -= redemption.points_spent));
-      }),
+      props.data.completions.then((data) => data.forEach((completion) => (pts += completion.points_earned))),
+      props.data.redemptions.then((data) => data.forEach((redemption) => (pts -= redemption.points_spent))),
     ]).then(() => {
+      console.log(pts)
       const balanceElement = $("#au-header-balance");
 
-      const balanceSign = balance > 0 ? "+" : "-";
-      const balanceText = balance == 0 ? "ツ" : balanceSign + balance;
+      const balanceSign = pts > 0 ? "+" : "-";
+      const balanceText = pts == 0 ? "ツ" : balanceSign + pts;
 
       balanceElement.text(balanceText);
     });
 
     $(dropElement).droppable({
-      over: (e, ui) => {
-        $(dropElement).addClass("au-drop-header");
-      },
+      over: (e, ui) => $(dropElement).addClass("au-drop-header"),
 
-      out: (e, ui) => {
-        $(dropElement).removeClass("au-drop-header");
-      },
+      out: (e, ui) => $(dropElement).removeClass("au-drop-header"),
 
       drop: (e, ui) => {
         const card = ui.draggable;
-
-        $(dropElement).removeClass("au-drop-header");
-
+        
         card.remove();
+        
         props.addCompletion(card.attr("id"));
+        localStorage.removeItem(card.attr("id"));
+        
+        $(dropElement).removeClass("au-drop-header");
       },
 
       tolerance: "touch",

@@ -1,13 +1,10 @@
 header {
   display: flex;
-  width: calc(100% - 2rem);
+  width: calc(100% - 2.75rem);
   height: 10rem;
   padding: 0.25rem 2.25rem 0.25rem 0.5rem;
-  z-index: -1;
   align-items: center;
   justify-content: space-between;
-  top: 0;
-  left: 0;
   gap: 1rem;
   background-color: inherit;
 }
@@ -49,10 +46,6 @@ header > section.au-drop-header {
 header > section.au-header-trailing {
   justify-content: end;
   flex-direction: column;
-}
-
-header > section.au-header-leading:not(.ui-droppable) + section.au-header-trailing {
-  padding-right: 0.5rem;
 }
 
 header > section.au-header-trailing > span {

@@ -22,22 +22,46 @@ h1,
   font-weight: 600;
 }
 
+h2,
+.au-text-xl {
+  line-height: 3.75rem;
+  font-size: 3.25rem;
+  font-weight: 600;
+}
+
+h3,
+.au-text-l {
+  line-height: 2.5rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+h4,
 .au-text-m {
   line-height: 2rem;
   font-size: 1.5rem;
   font-weight: 500;
 }
 
+h5,
 .au-text-s {
   line-height: 1.5rem;
   font-size: 1.25rem;
   font-weight: 300;
 }
 
+h6,
 .au-text-xs {
   line-height: 1rem;
   font-size: 0.75rem;
   font-weight: 300;
+}
+
+p,
+.au-text-p {
+  line-height: 1.5rem;
+  font-size: 1rem;
+  font-weight: 400;
 }
 
 .au-text-button {
