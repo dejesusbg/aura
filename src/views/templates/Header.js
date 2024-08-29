@@ -31,29 +31,28 @@ function Header(props) {
       props.data.completions.then((data) => data.forEach((completion) => (pts += completion.points_earned))),
       props.data.redemptions.then((data) => data.forEach((redemption) => (pts -= redemption.points_spent))),
     ]).then(() => {
-      console.log(pts)
       const balanceElement = $("#au-header-balance");
 
-      const balanceSign = pts > 0 ? "+" : "-";
+      const balanceSign = pts > 0 ? "+" : "";
       const balanceText = pts == 0 ? "ツ" : balanceSign + pts;
 
       balanceElement.text(balanceText);
     });
 
     $(dropElement).droppable({
-      over: (e, ui) => $(dropElement).addClass("au-drop-header"),
+      over: (ev, ui) => $(dropElement).addClass("au-drop-header"),
 
-      out: (e, ui) => $(dropElement).removeClass("au-drop-header"),
+      out: (ev, ui) => $(dropElement).removeClass("au-drop-header"),
 
-      drop: (e, ui) => {
+      drop: (ev, ui) => {
         const card = ui.draggable;
         
-        card.remove();
-        
-        props.addCompletion(card.attr("id"));
+        props.removeCard(card.attr("id"));
         localStorage.removeItem(card.attr("id"));
-        
+
         $(dropElement).removeClass("au-drop-header");
+
+        card.remove();
       },
 
       tolerance: "touch",

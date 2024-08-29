@@ -26,7 +26,7 @@ function Footer(props) {
 
     let actButtons = [
       { text: "add", onClick: addCard },
-      // { text: "refresh", onClick: () => window.location.reload() },
+      { text: "refresh", onClick: () => window.location.reload() },
     ];
 
     const shouldShowActions = navButtons.map((nav) => nav.path).includes(path);
@@ -37,15 +37,15 @@ function Footer(props) {
 
     return (
       <footer>
-        <Button text="aura" href="/home" type="text" />
+        <Button className="text" text="aura" href="/home" />
         {actButtons.map((btn) => (
-          <Button type="icon" text={btn.text} onClick={btn.onClick} />
+          <Button className="icon" text={btn.text} onClick={btn.onClick} />
         ))}
         {navButtons.map((btn) => (
-          <Button type="icon" text={btn.text} href={btn.path} />
+          <Button className="icon" text={btn.text} href={btn.path} />
         ))}
         {secButtons.map((btn) => (
-          <Button type="icon" text={btn.text} href={btn.path} />
+          <Button className="icon" text={btn.text} href={btn.path} />
         ))}
       </footer>
     );

@@ -36,9 +36,13 @@ function Card(props) {
       create: (ev, ui) => {
         localStorage.getItem(id) && $(cardElement).css(JSON.parse(localStorage.getItem(id)));
       },
+
+      drag: (ev, ui) => {
+        localStorage.setItem(id, JSON.stringify(ui.position));
+      },
+
       stop: (ev, ui) => {
         $(".ui-droppable").removeClass("au-drop-header");
-        localStorage.setItem(id, JSON.stringify(ui.position));
       },
     });
 

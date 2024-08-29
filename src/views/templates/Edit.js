@@ -1,118 +1,105 @@
 import { createElement, createFragment } from "../Render";
 import Button from "./Button";
+import FormGroup from "./FormGroup";
 
 /** @jsx createElement */
 /** @jsxFrag createFragment */
 
 function FormHabit(props) {
+  const { id } = props;
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    const name = e.target.name.value,
+      description = e.target.description.value,
+      frequency = e.target.frequency.value,
+      points = parseInt(e.target.points.value);
+
+    (id == "new")
+      ? props.addCard(true, name, description, frequency, points)
+      : props.updateCard(true, id, { name, description, frequency, points });
+
+    window.location.href = "/";
+  };
+
+  const onFrequencyChange = (e) => {
+    const weeklyDays = $("#weekly-days");
+    e.target.value == "weekly" ? weeklyDays.show() : weeklyDays.hide();
+  };
+
   return (
-    <>
-      <form id="habitForm" onSubmit={props.onSubmit}>
-        <div class="form-group">
-          <label for="name">Habit Name:</label>
-          <input type="text" id="name" name="name" required />
-        </div>
+    <form onSubmit={onSubmit}>
+      <FormGroup label="name:" id="name" type="text" />
+      <FormGroup label="description:" id="description" type="textarea" options={{ rows: 1 }} />
+      <FormGroup label="points:" id="points" type="number" />
 
-        <div class="form-group">
-          <label for="description">Description:</label>
-          <textarea id="description" name="description" rows="4" required></textarea>
-        </div>
+      <FormGroup
+        label="frequency:"
+        id="frequency"
+        type="select"
+        values={["daily", "weekly", "monthly", "once"]}
+        options={{ onChange: onFrequencyChange }}
+      />
 
-        <div class="form-group">
-          <label for="frequency">Frequency:</label>
-          <select id="frequency" name="frequency" required>
-            <option value="daily">Daily</option>
-            <option value="weekly">Weekly</option>
-            <option value="monthly">Monthly</option>
-            <option value="once">Once</option>
-          </select>
-        </div>
+      <FormGroup
+        label="select days:"
+        id="days"
+        type="select"
+        values={["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]}
+        options={{ multiple: true, size: 1 }}
+        groupOptions={{ id: "weekly-days", hidden: true }}
+      />
 
-        <div class="form-group hidden" id="weeklyDays">
-          <label for="days">Select Days (for Weekly):</label>
-          <select id="days" name="days" multiple>
-            <option value="0">Sunday</option>
-            <option value="1">Monday</option>
-            <option value="2">Tuesday</option>
-            <option value="3">Wednesday</option>
-            <option value="4">Thursday</option>
-            <option value="5">Friday</option>
-            <option value="6">Saturday</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="points">Points:</label>
-          <input type="number" id="points" name="points" min="0" required />
-        </div>
-
-        <button type="submit">Save Habit</button>
-      </form>
-    </>
+      <div class="au-form-button">
+        <Button className="text" text="save habit" type="submit" />
+      </div>
+    </form>
   );
 }
 
-function FormReward(props) {}
+function FormReward(props) {
+  const { id } = props;
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    const name = e.target.name.value,
+      description = e.target.description.value,
+      points = parseInt(e.target.points.value);
+
+    (id == "new")
+      ? props.addCard(false, name, description, points)
+      : props.updateCard(false, id, { name, description, points });
+
+    window.location.href = "/rewards";
+  };
+
+  return (
+    <form onSubmit={onSubmit}>
+      <FormGroup label="name:" id="name" type="text" />
+      <FormGroup label="description:" id="description" type="textarea" options={{ rows: 1 }} />
+      <FormGroup label="points:" id="points" type="number" />
+
+      <div class="au-form-button">
+        <Button className="text" text="save reward" type="submit" />
+      </div>
+    </form>
+  );
+}
 
 function Edit(props) {
   if (props) {
     const params = new URL(location.href).searchParams;
 
-    const type = params.get("habit") ? "habit" : "reward";
     const id = (params.get("habit") ?? params.get("reward")) || "";
+    const Form = params.get("habit") ? FormHabit : FormReward;
 
-    var form = null;
-
-    switch (type) {
-      case "habit":
-        props.onSubmit = (e) => {
-          e.preventDefault();
-
-          if (id == "new") {
-            props.addCard(
-              true,
-              e.target.name.value,
-              e.target.description.value,
-              e.target.frequency.value,
-              parseInt(e.target.points.value)
-            );
-          } else {
-            props.updateCard(true, id, {
-              name: e.target.name.value,
-              description: e.target.description.value,
-              frequency: e.target.frequency.value,
-              points: e.target.points.value,
-            });
-          }
-
-          window.location.href = "/";
-        };
-
-        form = <FormHabit {...props} />;
-        break;
-
-      case "reward":
-        props.onSubmit = (e) => {
-          e.preventDefault();
-
-          if (id == "new") {
-            props.addCard(false, e.target.name.value, e.target.description.value, e.target.points.value);
-          } else {
-            props.updateCard(false, id, {
-              name: e.target.name.value,
-              description: e.target.description.value,
-              points_required: e.target.points.value,
-            });
-          }
-
-          window.location.href = "/rewards";
-        };
-
-        form = <FormReward {...props} />;
-        break;
-    }
-
-    return <main class="au-main-flex">{form}</main>;
+    return (
+      <main class="au-main-flex">
+        <Form {...props} id={id} />
+      </main>
+    );
   }
 }
 

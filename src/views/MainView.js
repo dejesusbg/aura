@@ -22,11 +22,15 @@ class MainView {
   }
 
   renderHeader() {
-    const addCompletion = (...args) => {
-      return HabitCompletionController.createCompletion(this.db, ...args);
+    const isDefault = this.path == "/";
+
+    const removeCard = (...args) => {
+      return isDefault
+        ? HabitCompletionController.createCompletion(this.db, ...args)
+        : RedemptionController.createRedemption(this.db, ...args);
     };
 
-    const appHeader = <Header data={this.data} addCompletion={addCompletion} />;
+    const appHeader = <Header data={this.data} removeCard={removeCard} />;
     return appHeader;
   }
 
