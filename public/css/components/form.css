@@ -1,0 +1,67 @@
+form {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.au-form-group {
+  flex: 40%;
+}
+
+@media screen and (max-width: 600px) {
+  .au-form-group {
+    flex: 100%;
+  }
+}
+
+.au-form-button {
+  display: flex;
+  flex: 100%;
+  align-items: flex-end;
+  margin: 0.5rem 0;
+  flex-direction: column;
+}
+
+.au-form-group label {
+  display: block;
+  margin: 0 0 0.5rem 0.25rem;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--outline-color);
+  box-sizing: border-box;
+  color: var(--on-background-color);
+  text-overflow: ellipsis;
+  border-radius: 0.5rem;
+  background-color: var(--surface-color);
+}
+
+textarea {
+  resize: none;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0.2rem var(--container-color);
+  border-color: var(--container-color);
+}
+
+select[multiple] {
+  height: auto;
+}
+
+#weekly-days {
+  flex: 100%;
+}

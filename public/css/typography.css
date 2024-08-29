@@ -64,8 +64,23 @@ p,
   font-weight: 400;
 }
 
+label,
+.au-text-label {
+  line-height: 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
 .au-text-button {
   font-family: "Excon-Variable", "sans serif";
   font-weight: 600;
+  font-size: 1rem;
+}
+
+input,
+textarea,
+select {
+  font-family: "Excon-Variable", "sans serif";
+  font-weight: 400;
   font-size: 1rem;
 }
