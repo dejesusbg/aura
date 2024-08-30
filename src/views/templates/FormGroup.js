@@ -31,6 +31,8 @@ function FormGroup(props) {
       break;
   }
 
+  $(input).attr("required", options.required);
+
   return (
     <div class="au-form-group" {...groupOptions}>
       <label for={id}>{label}</label>
