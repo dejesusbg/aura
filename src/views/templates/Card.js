@@ -1,3 +1,5 @@
+import parseFrequency from "../../lib/parseFrequency";
+
 import { createElement, createFragment } from "../Render";
 import Button from "./Button";
 
@@ -12,15 +14,14 @@ function Card(props) {
   const dragElement = <CardDrag />;
 
   if (props) {
-    let { habit_id, reward_id, name, description } = props.data;
+    const { habit_id, name, description, points, frequency, streak, type } = props.data;
 
-    const id = (habit_id ?? reward_id) + "";
-    const type = habit_id ? "habit" : "reward";
+    if (!parseFrequency(props.data)) return "";
 
-    const handleEdit = () => (window.location.href = `/edit?${type}=${id}`);
+    const handleEdit = () => (window.location.href = `/edit?id=${habit_id}`);
 
     const cardElement = (
-      <div id={id} class="au-card">
+      <div id={habit_id} class="au-card">
         {dragElement}
         <div class="au-main-card" onClick={handleEdit}>
           <span class="au-text-m">{name}</span>
@@ -34,11 +35,11 @@ function Card(props) {
       containment: "window",
       opacity: 0.8,
       create: (ev, ui) => {
-        localStorage.getItem(id) && $(cardElement).css(JSON.parse(localStorage.getItem(id)));
+        localStorage.getItem(habit_id) && $(cardElement).css(JSON.parse(localStorage.getItem(habit_id)));
       },
 
       drag: (ev, ui) => {
-        localStorage.setItem(id, JSON.stringify(ui.position));
+        localStorage.setItem(habit_id, JSON.stringify(ui.position));
       },
 
       stop: (ev, ui) => {
