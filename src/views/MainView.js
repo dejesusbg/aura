@@ -1,9 +1,7 @@
 import { createElement, createFragment } from "./Render";
 
 import HabitController from "../controllers/mdbHabit";
-import HabitCompletionController from "../controllers/mdbHabitCompletion";
-import RewardController from "../controllers/mdbReward";
-import RedemptionController from "../controllers/mdbRedemption";
+import CompletionController from "../controllers/mdbCompletion";
 
 import Header from "./templates/Header";
 import Container from "./templates/Container";
@@ -19,61 +17,39 @@ class MainView {
     this.db = db;
     this.data = data;
     this.path = window.location.pathname;
+    this.view = [];
+    this.default = this.path == "/";
   }
 
   renderHeader() {
-    const isDefault = this.path == "/";
-
-    const removeCard = (...args) => {
-      return isDefault
-        ? HabitCompletionController.createCompletion(this.db, ...args)
-        : RedemptionController.createRedemption(this.db, ...args);
-    };
+    const removeCard = (...args) => CompletionController.createCompletion(this.db, ...args);
 
     const appHeader = <Header data={this.data} removeCard={removeCard} />;
-    return appHeader;
+    this.view.push(appHeader);
   }
 
   renderSimpleHeader() {
-    const name = this.path.replace("/", "");
-
-    const appSimpleHeader = <SimpleHeader name={name} />;
-    return appSimpleHeader;
+    const appHeader = <SimpleHeader />;
+    this.view.push(appHeader);
   }
 
   renderContainer() {
-    const isDefault = this.path == "/";
-
-    const data = isDefault ? this.data.habits : this.data.rewards;
-
-    const appContainer = <Container data={data} />;
-    return appContainer;
+    const appContainer = <Container data={this.data.habits} />;
+    this.view.push(appContainer);
   }
 
   renderFooter() {
-    const appFooter = <Footer container={this.container} />;
-    return appFooter;
+    const appFooter = <Footer />;
+    this.view.push(appFooter);
   }
 
   renderEdit() {
-    const addCard = (isDefault = true, ...args) => {
-      return isDefault
-        ? HabitController.createHabit(this.db, ...args)
-        : RewardController.createReward(this.db, ...args);
-    };
+    const addCard = (...args) => HabitController.createHabit(this.db, ...args);
+    const getCard = (...args) => HabitController.getHabit(this.db, ...args);
+    const setCard = (...args) => HabitController.updateHabit(this.db, ...args);
 
-    const getCard = (isDefault = true, ...args) => {
-      return isDefault ? HabitController.getHabit(this.db, ...args) : RewardController.getReward(this.db, ...args);
-    };
-
-    const updateCard = (isDefault = true, ...args) => {
-      return isDefault
-        ? HabitController.updateHabit(this.db, ...args)
-        : RewardController.updateReward(this.db, ...args);
-    };
-
-    const appEdit = <Edit addCard={addCard} updateCard={updateCard} getCard={getCard} />;
-    return appEdit;
+    const appEdit = <Edit addCard={addCard} setCard={setCard} getCard={getCard} />;
+    this.view.push(appEdit);
   }
 
   renderSettings() {}
@@ -81,53 +57,37 @@ class MainView {
   renderHome() {}
 
   render() {
-    const location = window.location.pathname;
-
-    let thisView = [];
-
-    switch (location) {
+    switch (this.path) {
       case "/":
-      case "/rewards":
-        this.header = this.renderHeader();
-        this.container = this.renderContainer();
-
-        thisView.push(this.header, this.container);
+        this.renderHeader();
+        this.renderContainer();
         break;
 
       case "/edit":
-        this.header = this.renderSimpleHeader();
-        this.edit = this.renderEdit();
-
-        thisView.push(this.header, this.edit);
+        this.renderSimpleHeader();
+        this.renderEdit();
         break;
 
       case "/settings":
-        this.header = this.renderSimpleHeader();
-        this.settings = this.renderSettings();
-
-        thisView.push(this.header, this.settings);
+        this.renderSimpleHeader();
+        this.renderSettings();
         break;
 
       case "/history":
-        this.header = this.renderSimpleHeader();
-        this.history = this.renderHistory();
-
-        thisView.push(this.header, this.history);
+        this.renderSimpleHeader();
+        this.renderHistory();
         break;
 
       case "/home":
-        this.header = this.renderSimpleHeader();
-        this.home = this.renderHome();
-
-        thisView.push(this.header, this.home);
+        this.renderSimpleHeader();
+        this.renderHome();
         break;
     }
 
-    this.footer = this.renderFooter();
-    thisView.push(this.footer);
+    this.renderFooter();
 
     const body = $("body");
-    body.prepend(...thisView);
+    body.prepend(...this.view);
   }
 }
 
