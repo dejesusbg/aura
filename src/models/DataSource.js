@@ -5,13 +5,13 @@ class DataSource {
       this.dbPromise = this.openDB();
       DataSource.instance = this;
     }
-    
+
     return DataSource.instance;
   }
 
   openDB() {
     return new Promise((resolve, reject) => {
-      const request = indexedDB.open("AuraDB", 1);  
+      const request = indexedDB.open("AuraDB", 1);
 
       request.onerror = (event) => {
         console.error("Database error:", event.target.error);
@@ -33,14 +33,6 @@ class DataSource {
 
         if (!db.objectStoreNames.contains("completions")) {
           db.createObjectStore("completions", { keyPath: "completion_id" });
-        }
-
-        if (!db.objectStoreNames.contains("rewards")) {
-          db.createObjectStore("rewards", { keyPath: "reward_id" });
-        }
-
-        if (!db.objectStoreNames.contains("redemptions")) {
-          db.createObjectStore("redemptions", { keyPath: "redemption_id" });
         }
       };
     });

@@ -1,12 +1,15 @@
 class Habit {
-  constructor(habit_id, name, description, frequency, points) {
+  constructor(habit_id, name, description, points, frequency) {
     this.habit_id = habit_id;
     this.name = name;
     this.description = description;
-    this.frequency = frequency;
     this.points = points;
+    this.frequency = frequency;
+
+    this.streak = 0;
     this.created_at = new Date();
     this.updated_at = new Date();
+    this.type = points >= 0 ? "habit" : "reward";
   }
 
   static async save(db, habit) {
@@ -45,7 +48,7 @@ class Habit {
   static async getAll(db) {
     const transaction = db.transaction("habits", "readonly");
     const store = transaction.objectStore("habits");
-    
+
     return new Promise((resolve, reject) => {
       const request = store.getAll();
       request.onsuccess = () => resolve(request.result);

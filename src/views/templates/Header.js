@@ -25,18 +25,16 @@ function Header(props) {
   );
 
   if (props) {
-    var pts = 0;
+    props.data.completions.then((data) => {
+      var pts = 0;
+      data.forEach((completion) => (pts += completion.points));
 
-    Promise.all([
-      props.data.completions.then((data) => data.forEach((completion) => (pts += completion.points_earned))),
-      props.data.redemptions.then((data) => data.forEach((redemption) => (pts -= redemption.points_spent))),
-    ]).then(() => {
       const balanceElement = $("#au-header-balance");
 
-      const balanceSign = pts > 0 ? "+" : "";
-      const balanceText = pts == 0 ? "ツ" : balanceSign + pts;
+      const sign = pts > 0 ? "+" : "";
+      const text = pts == 0 ? "ツ" : sign + pts;
 
-      balanceElement.text(balanceText);
+      balanceElement.text(text);
     });
 
     $(dropElement).droppable({
@@ -46,7 +44,7 @@ function Header(props) {
 
       drop: (ev, ui) => {
         const card = ui.draggable;
-        
+
         props.removeCard(card.attr("id"));
         localStorage.removeItem(card.attr("id"));
 

@@ -1,9 +1,9 @@
-class HabitCompletion {
-  constructor(completion_id, habit_id, date = new Date(), points_earned) {
+class Completion {
+  constructor(completion_id, habit_id, date = new Date(), points) {
     this.completion_id = completion_id;
     this.habit_id = habit_id;
     this.date = date;
-    this.points_earned = points_earned;
+    this.points = points;
   }
 
   static save(db, completion) {
@@ -49,4 +49,4 @@ class HabitCompletion {
   }
 }
 
-export default HabitCompletion;
+export default Completion;

@@ -1,10 +1,10 @@
-import UniqueID from "./UniqueID";
+import uniqueId from "../lib/uniqueId";
 
 import Habit from "../models/Habit";
 
 class HabitController {
-  static async createHabit(db, name, description, frequency, points) {
-    const habit = new Habit(UniqueID(), name, description, frequency, points);
+  static async createHabit(db, name, description, points, frequency) {
+    const habit = new Habit(uniqueId(), name, description, points, frequency);
     await Habit.save(db, habit);
 
     return habit;
@@ -19,7 +19,6 @@ class HabitController {
 
     if (habit) {
       Object.assign(habit, updatedData);
-      habit.updated_at = new Date();
       await Habit.save(db, habit);
       return habit;
     }

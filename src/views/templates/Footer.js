@@ -5,51 +5,38 @@ import Card from "./Card";
 /** @jsx createElement */
 /** @jsxFrag createFragment */
 
-function Footer(props) {
-  if (props) {
-    const path = window.location.pathname;
+function Footer() {
+  const path = window.location.pathname;
 
-    const addCard = () => {
-      const type = path == "/" ? "habit" : "reward";
-      window.location.href = `/edit?${type}=new`;
-    };
+  const addCard = () => (window.location.href = `/edit?id=new`);
 
-    let navButtons = [
-      { path: "/", text: "home" },
-      { path: "/rewards", text: "emoji_events" },
-    ];
+  let navButtons = [
+    { path: "/", text: "home" },
+    { path: "/history", text: "emoji_events" },
+    { path: "/settings", text: "settings" },
+  ];
 
-    let secButtons = [
-      { path: "/history", text: "history" },
-      { path: "/settings", text: "settings" },
-    ];
+  let actButtons = [
+    { text: "add", onClick: addCard },
+    { text: "refresh", onClick: () => window.location.reload() },
+  ];
 
-    let actButtons = [
-      { text: "add", onClick: addCard },
-      { text: "refresh", onClick: () => window.location.reload() },
-    ];
+  const shouldShowActions = path == "/";
+  !shouldShowActions && (actButtons = []);
 
-    const shouldShowActions = navButtons.map((nav) => nav.path).includes(path);
-    !shouldShowActions && (actButtons = []);
+  navButtons = navButtons.filter((nav) => nav.path != path);
 
-    navButtons = navButtons.filter((nav) => nav.path != path);
-    secButtons = secButtons.filter((nav) => nav.path != path);
-
-    return (
-      <footer>
-        <Button className="text" text="aura" href="/home" />
-        {actButtons.map((btn) => (
-          <Button className="icon" text={btn.text} onClick={btn.onClick} />
-        ))}
-        {navButtons.map((btn) => (
-          <Button className="icon" text={btn.text} href={btn.path} />
-        ))}
-        {secButtons.map((btn) => (
-          <Button className="icon" text={btn.text} href={btn.path} />
-        ))}
-      </footer>
-    );
-  }
+  return (
+    <footer>
+      <Button className="text" text="aura" href="/home" />
+      {actButtons.map((btn) => (
+        <Button className="icon" text={btn.text} onClick={btn.onClick} />
+      ))}
+      {navButtons.map((btn) => (
+        <Button className="icon" text={btn.text} href={btn.path} />
+      ))}
+    </footer>
+  );
 }
 
 export default Footer;
