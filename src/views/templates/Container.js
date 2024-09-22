@@ -30,11 +30,6 @@ export default function Container({ habits, createCompletion }) {
     <main>
       <h4>{date}</h4>
       {cards}
-      {cards}
-      {cards}
-      {cards}
-      {cards}
-      {cards}
     </main>
   );
 }
