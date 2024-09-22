@@ -14,7 +14,7 @@ export default function Card({ data }) {
         <span className="au-text-m">{name}</span>
         {description && <span className="au-text-xs">{description}</span>}
       </div>
-      <Button className="au-button-icon" text="done" />
+      <Button className="icon" text="done" />
     </div>
   );
 }

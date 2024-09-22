@@ -10,7 +10,6 @@ function parseFrequency(habit) {
   const lastUpdated = new Date(habit.updated_at);
 
   if (habit.frequency === "once") {
-    console.log(habit.created_at, lastUpdated);
     return habit.created_at.getTime() === lastUpdated.getTime();
   }
 
