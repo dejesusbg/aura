@@ -32,7 +32,7 @@ class MainView {
   }
 
   setTheme() {
-    colorScheme("#ffb938", "#537f56");
+    colorScheme("#ff8d02", "#537f56");
     toggleDarkMode();
   }
 

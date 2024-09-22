@@ -2,18 +2,39 @@ import React, { useEffect, useState } from "react";
 import parseFrequency from "../../lib/parseFrequency";
 import Card from "./Card";
 
-export default function Container({ habits }) {
+export default function Container({ habits, createCompletion }) {
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
     const updateCards = async () => {
       const fetchedData = await habits;
-      const filteredCards = fetchedData.filter(parseFrequency).map((item) => <Card key={item.habit_id} data={item} />);
+      const filteredCards = fetchedData.map((item) => (
+        <Card key={item.habit_id} data={item} createCompletion={createCompletion} />
+        // .filter(parseFrequency)
+      ));
       setCards(filteredCards);
     };
 
     updateCards();
   }, [habits]);
 
-  return <main>{cards}</main>;
+  const dateOptions = {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  };
+
+  const date = new Intl.DateTimeFormat("en-UK", dateOptions).format(new Date());
+
+  return (
+    <main>
+      <h4>{date}</h4>
+      {cards}
+      {cards}
+      {cards}
+      {cards}
+      {cards}
+      {cards}
+    </main>
+  );
 }

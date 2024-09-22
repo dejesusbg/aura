@@ -1,12 +1,19 @@
 header {
   display: flex;
+  position: fixed;
   width: calc(100% - 2.75rem);
   height: 10rem;
-  padding: 0.25rem 2.25rem 0.25rem 0.5rem;
+  padding: 0.75rem 2.25rem 0.25rem 0.5rem;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
   background-color: inherit;
+  left: 0;
+  top: 0.5rem;
+  -webkit-backdrop-filter: blur(5rem);
+  backdrop-filter: blur(5rem);
+  top: 0;
+  border-radius: 0 0 2rem 2rem;
 }
 
 header > section {

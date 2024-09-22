@@ -1,4 +1,11 @@
 main {
-  margin: 0 1rem;
+  display: flex;
   height: calc(100% - 10rem);
+  margin: 11rem 1rem 0;
+  padding-bottom: 6rem;
+  flex-direction: column;
+}
+
+main > h4 {
+  margin: 1rem;
 }
