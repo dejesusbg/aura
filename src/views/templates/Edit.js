@@ -7,12 +7,12 @@ const days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", 
 
 function getFrequencies(frequency, days) {
   if (frequency === "weekly") {
-    return days.map((day, index) => (days.includes(day) ? frequency + index : null)).join("");
+    return frequency + days.map((day, index) => (days.includes(day) ? index : null)).join("");
   }
   return frequency;
 }
 
-export default function Edit({ createHabit, updateHabit }) {
+export default function Edit({ createHabit, updateHabit, getHabit }) {
   const [card, setCard] = useState(null);
   const weeklyDaysRef = useRef();
 
@@ -56,12 +56,12 @@ export default function Edit({ createHabit, updateHabit }) {
   if (!card) return null;
 
   return (
-    <main className="au-main-flex">
+    <main>
       <form onSubmit={handleSubmit}>
         <InputField id="name" required={true} />
         <InputField id="description" type="textarea" options={{ rows: 1 }} required={true} />
         <InputField id="points" type="number" required={true} />
-        <InputField id="frequency" type="select" values={frequencies} options={{ onChange: handleFrequencyChange }} />
+        <InputField id="frequency" type="select" values={frequencies} onChange={handleFrequencyChange} />
 
         <div ref={weeklyDaysRef} style={{ display: "none" }}>
           <InputField
