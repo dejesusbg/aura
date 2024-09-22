@@ -1,24 +1,14 @@
-import { createElement, createFragment } from "../Render";
+import React from "react";
 
-/** @jsx createElement */
-/** @jsxFrag createFragment */
+export default function Button({ type = "button", className, href, handleClick, text }) {
+  const btnClass = `au-button-${className}`;
+  const txtClass = className === "icon" ? "material-symbols-rounded" : "au-text-button";
 
-function Button(props) {
-  if (props) {
-    var { type, className, text, onClick, href } = props;
-    type = type || "button";
+  handleClick = href ? () => (window.location.href = href) : handleClick;
 
-    const btnClass = `au-button-${className}`;
-    const txtClass = className === "icon" ? "material-symbols-rounded" : "au-text-button";
-
-    href && (onClick = () => (window.location.href = href));
-
-    return (
-      <button class={btnClass} type={type} onClick={onClick}>
-        <span class={txtClass}>{text}</span>
-      </button>
-    );
-  }
+  return (
+    <button className={btnClass} type={type} onClick={handleClick}>
+      <span className={txtClass}>{text}</span>
+    </button>
+  );
 }
-
-export default Button;

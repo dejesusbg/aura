@@ -1,44 +1,39 @@
-import { createElement, createFragment } from "../Render";
+import React from "react";
 
-/** @jsx createElement */
-/** @jsxFrag createFragment */
+export default function InputField({
+  id,
+  type = "text",
+  label = `${id}:`,
+  values = [],
+  options = {},
+  groupOptions = {},
+  required = false,
+}) {
+  const renderInput = () => {
+    switch (type) {
+      case "textarea":
+        return <textarea id={id} name={id} {...options} required={required} />;
 
-function FormGroup(props) {
-  var { label, id, type, values, options, groupOptions } = props;
+      case "select":
+        return (
+          <select id={id} name={id} {...options} required={required}>
+            {values.map((value) => (
+              <option key={value} value={value}>
+                {value}
+              </option>
+            ))}
+          </select>
+        );
 
-  options ??= {};
-  options.required ??= true;
-
-  var input = null;
-
-  switch (type) {
-    default:
-      input = <input type={type} id={id} name={id} {...options} />;
-      break;
-
-    case "textarea":
-      input = <textarea id={id} name={id} {...options} />;
-      break;
-
-    case "select":
-      input = <select id={id} name={id} {...options}></select>;
-
-      values.forEach((value) => {
-        const optElement = <option value={value}>{value}</option>;
-        $(input).append(optElement);
-      });
-
-      break;
-  }
-
-  $(input).attr("required", options.required);
+      default:
+        return <input type={type} id={id} name={id} {...options} required={required} />;
+    }
+  };
 
   return (
-    <div class="au-form-group" {...groupOptions}>
-      <label for={id}>{label}</label>
-      {input}
+    <div className="au-form-group" {...groupOptions}>
+      <label htmlFor={id}>{label}</label>
+      {renderInput()}
     </div>
   );
 }
-
-export default FormGroup;

@@ -1,22 +1,23 @@
 const path = require("path");
 
 module.exports = {
-  entry: "./src/index.js", // Archivo de entrada principal
+  entry: "./src/index.js",
+
   output: {
-    filename: "bundle.js", // Archivo de salida
-    path: path.resolve(__dirname, "public/js"), // Carpeta de salida
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "public/js"),
   },
-  mode: "development", // Usa 'production' para producción
+
+  mode: "development",
+
   module: {
     rules: [
       {
-        test: /\.js$/, // Aplica la configuración a archivos .js
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader", // Usa Babel para transpilar ES6+
-          options: {
-            presets: ["@babel/preset-env"],
-          },
+          loader: "babel-loader",
+          options: { presets: ["@babel/preset-env"] },
         },
       },
     ],

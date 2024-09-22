@@ -1,20 +1,19 @@
-import { createElement, createFragment } from "../Render";
+import React, { useEffect, useState } from "react";
+import parseFrequency from "../../lib/parseFrequency";
 import Card from "./Card";
 
-/** @jsx createElement */
-/** @jsxFrag createFragment */
+export default function Container({ habits }) {
+  const [cards, setCards] = useState([]);
 
-function Container(props) {
-  const mainElement = <main></main>;
+  useEffect(() => {
+    const updateCards = async () => {
+      const fetchedData = await habits;
+      const filteredCards = fetchedData.filter(parseFrequency).map((item) => <Card key={item.id} data={item} />);
+      setCards(filteredCards);
+    };
 
-  if (props) {
-    props.data.then((data) => {
-      const allCards = data.map((data) => <Card data={data} />);
-      mainElement.append(...allCards);
-    });
-  }
+    updateCards();
+  }, [habits]);
 
-  return mainElement;
+  return <main>{cards}</main>;
 }
-
-export default Container;

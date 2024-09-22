@@ -1,63 +1,44 @@
-import { createElement, createFragment } from "../Render";
+import React, { useEffect, useState } from "react";
 
-/** @jsx createElement */
-/** @jsxFrag createFragment */
+const image = {
+  url: "images/logo.png",
+  alt: "logo",
+};
 
-function DropHeader() {
+export default function Header({ completions }) {
+  const [balance, setBalance] = useState("ツ");
+
+  useEffect(() => {
+    const updateBalance = async () => {
+      if (completions) {
+        const fetchedData = await completions;
+        const totalPoints = fetchedData.reduce((sum, completion) => sum + completion.points, 0);
+        setBalance(totalPoints === 0 ? "ツ" : `${totalPoints > 0 ? "+" : ""}${totalPoints}`);
+      }
+    };
+
+    updateBalance();
+  }, [completions]);
+
+  const path = window.location.pathname;
+  const name = path.replace("/", "");
+
+  const displayText =
+    path === "/" ? (
+      <>
+        <span className="au-text-xxl">{balance}</span>
+        <span className="au-text-s">points</span>
+      </>
+    ) : (
+      <span className="au-text-xl">{name}</span>
+    );
+
   return (
-    <section class="au-header-leading">
-      <img src="images/logo.png" alt="logo" draggable="false"></img>
-    </section>
-  );
-}
-
-function Header(props) {
-  const dropElement = <DropHeader />;
-
-  const headerElement = (
     <header>
-      {dropElement}
-      <section class="au-header-trailing">
-        <span id="au-header-balance" class="au-text-xxl"></span>
-        <span class="au-text-s">points</span>
+      <section className="au-header-leading">
+        <img src={image.url} alt={image.alt} draggable="false" />
       </section>
+      <section className="au-header-trailing">{displayText}</section>
     </header>
   );
-
-  if (props) {
-    props.data.completions.then((data) => {
-      var pts = 0;
-      data.forEach((completion) => (pts += completion.points));
-
-      const balanceElement = $("#au-header-balance");
-
-      const sign = pts > 0 ? "+" : "";
-      const text = pts == 0 ? "ツ" : sign + pts;
-
-      balanceElement.text(text);
-    });
-
-    $(dropElement).droppable({
-      over: (ev, ui) => $(dropElement).addClass("au-drop-header"),
-
-      out: (ev, ui) => $(dropElement).removeClass("au-drop-header"),
-
-      drop: (ev, ui) => {
-        const card = ui.draggable;
-
-        props.removeCard(card.attr("id"));
-        localStorage.removeItem(card.attr("id"));
-
-        $(dropElement).removeClass("au-drop-header");
-
-        card.remove();
-      },
-
-      tolerance: "touch",
-    });
-  }
-
-  return headerElement;
 }
-
-export default Header;

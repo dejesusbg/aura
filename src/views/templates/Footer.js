@@ -1,42 +1,32 @@
-import { createElement, createFragment } from "../Render";
+import React from "react";
 import Button from "./Button";
-import Card from "./Card";
 
-/** @jsx createElement */
-/** @jsxFrag createFragment */
+const actions = [
+  { text: "add", handleClick: () => (window.location.href = "/edit?id=new") },
+  { text: "refresh", handleClick: () => window.location.reload() },
+];
 
-function Footer() {
+const navigation = [
+  { text: "home", href: "/" },
+  { text: "emoji_events", href: "/history" },
+  { text: "settings", href: "/settings" },
+];
+
+export default function Footer() {
   const path = window.location.pathname;
 
-  const addCard = () => (window.location.href = `/edit?id=new`);
-
-  let navButtons = [
-    { path: "/", text: "home" },
-    { path: "/history", text: "emoji_events" },
-    { path: "/settings", text: "settings" },
-  ];
-
-  let actButtons = [
-    { text: "add", onClick: addCard },
-    { text: "refresh", onClick: () => window.location.reload() },
-  ];
-
-  const shouldShowActions = path == "/";
-  !shouldShowActions && (actButtons = []);
-
-  navButtons = navButtons.filter((nav) => nav.path != path);
+  const actButtons = path === "/" ? actions : [];
+  const navButtons = navigation.filter((nav) => nav.href !== path);
 
   return (
     <footer>
-      <Button className="text" text="aura" href="/home" />
-      {actButtons.map((btn) => (
-        <Button className="icon" text={btn.text} onClick={btn.onClick} />
+      <Button key="aura" className="text" href="/home" text="aura" />
+      {actButtons.map(({ text, handleClick }) => (
+        <Button key={text} className="icon" handleClick={handleClick} text={text} />
       ))}
-      {navButtons.map((btn) => (
-        <Button className="icon" text={btn.text} href={btn.path} />
+      {navButtons.map(({ text, href }) => (
+        <Button key={text} className="icon" href={href} text={text} />
       ))}
     </footer>
   );
 }
-
-export default Footer;
