@@ -1,0 +1,81 @@
+body {
+  background: var(--color-background);
+  color: var(--color-on-background);
+  --aura: rgba(255, 161, 48, 0.4);
+}
+
+body.light {
+  --color-primary: var(--primary-40);
+  --color-on-primary: var(--primary-100);
+  --color-primary-container: var(--primary-90);
+  --color-on-primary-container: var(--primary-10);
+  --color-secondary: var(--secondary-40);
+  --color-on-secondary: var(--secondary-100);
+  --color-secondary-container: var(--secondary-90);
+  --color-on-secondary-container: var(--secondary-10);
+  --color-tertiary: var(--tertiary-40);
+  --color-on-tertiary: var(--tertiary-100);
+  --color-tertiary-container: var(--tertiary-90);
+  --color-on-tertiary-container: var(--tertiary-10);
+  --color-background: var(--neutral-99);
+  --color-on-background: var(--neutral-10);
+  --color-surface: var(--neutral-99);
+  --color-on-surface: var(--neutral-10);
+  --color-surface-variant: var(--neutral-variant-90);
+  --color-on-surface-variant: var(--neutral-variant-30);
+  --color-outline: var(--neutral-variant-50);
+  --color-inverse-on-surface: var(--neutral-95);
+  --color-inverse-surface: var(--neutral-20);
+  --color-surface-e1: var(--neutral-99-e1);
+  --color-surface-variant-e1: var(--neutral-variant-90-e1);
+  --color-inverse-surface-e1: var(--neutral-20-e1);
+  --color-surface-e2: var(--neutral-99-e2);
+  --color-surface-variant-e2: var(--neutral-variant-90-e2);
+  --color-inverse-surface-e2: var(--neutral-20-e2);
+  --color-surface-e3: var(--neutral-99-e3);
+  --color-surface-variant-e3: var(--neutral-variant-90-e3);
+  --color-inverse-surface-e3: var(--neutral-20-e3);
+  --color-surface-e4: var(--neutral-99-e4);
+  --color-surface-variant-e4: var(--neutral-variant-90-e4);
+  --color-inverse-surface-e4: var(--neutral-20-e4);
+  --hover: rgba(0, 0, 0, 0.05);
+  --ripple: rgb(0 0 0 / 50%);
+}
+
+body.dark {
+  --color-primary: var(--primary-80);
+  --color-on-primary: var(--primary-20);
+  --color-primary-container: var(--primary-30);
+  --color-on-primary-container: var(--primary-90);
+  --color-secondary: var(--secondary-80);
+  --color-on-secondary: var(--secondary-20);
+  --color-secondary-container: var(--secondary-30);
+  --color-on-secondary-container: var(--secondary-90);
+  --color-tertiary: var(--tertiary-80);
+  --color-on-tertiary: var(--tertiary-20);
+  --color-tertiary-container: var(--tertiary-30);
+  --color-on-tertiary-container: var(--tertiary-90);
+  --color-background: var(--neutral-10);
+  --color-on-background: var(--neutral-90);
+  --color-surface: var(--neutral-10);
+  --color-on-surface: var(--neutral-90);
+  --color-surface-variant: var(--neutral-variant-30);
+  --color-on-surface-variant: var(--neutral-variant-80);
+  --color-outline: var(--neutral-variant-60);
+  --color-inverse-on-surface: var(--neutral-10);
+  --color-inverse-surface: var(--neutral-90);
+  --color-surface-e1: var(--neutral-10-e1);
+  --color-surface-variant-e1: var(--neutral-variant-30-e1);
+  --color-inverse-surface-e1: var(--neutral-90-e1);
+  --color-surface-e2: var(--neutral-10-e2);
+  --color-surface-variant-e2: var(--neutral-variant-30-e2);
+  --color-inverse-surface-e2: var(--neutral-90-e2);
+  --color-surface-e3: var(--neutral-10-e3);
+  --color-surface-variant-e3: var(--neutral-variant-30-e3);
+  --color-inverse-surface-e3: var(--neutral-90-e3);
+  --color-surface-e4: var(--neutral-10-e4);
+  --color-surface-variant-e4: var(--neutral-variant-30-e4);
+  --color-inverse-surface-e4: var(--neutral-90-e4);
+  --hover: rgba(255, 255, 255, 0.05);
+  --ripple: rgb(255 255 255 / 50%);
+}

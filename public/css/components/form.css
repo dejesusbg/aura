@@ -37,12 +37,12 @@ select {
   display: block;
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid var(--outline-color);
+  border: 1px solid var(--color-outline);
   box-sizing: border-box;
-  color: var(--on-background-color);
+  color: var(--color-on-background);
   text-overflow: ellipsis;
   border-radius: 0.5rem;
-  background-color: var(--surface-color);
+  background-color: var(--color-surface);
 }
 
 textarea {
@@ -54,8 +54,8 @@ input[type="number"]:focus,
 textarea:focus,
 select:focus {
   outline: none;
-  box-shadow: 0 0 0.2rem var(--container-color);
-  border-color: var(--container-color);
+  box-shadow: 0 0 0.2rem var(--color-tertiary);
+  border-color: var(--color-tertiary);
 }
 
 select[multiple] {

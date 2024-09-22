@@ -5,7 +5,7 @@ div.au-card {
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   border-radius: 0.5rem;
-  background-color: var(--card-color);
+  background-color: var(--color-primary-container);
   max-width: 15rem;
   min-width: 5rem;
 }

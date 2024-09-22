@@ -18,13 +18,22 @@ class MainView {
   }
 
   render() {
+    this.setTheme();
+
     const views = this.getViews();
 
-    const app = $("<div id='app'></div>");
-    $("body").prepend(app);
+    const app = document.createElement("div");
+    app.id = "app";
 
-    const root = createRoot(app[0]);
+    document.body.prepend(app);
+
+    const root = createRoot(app);
     root.render(<StrictMode>{views}</StrictMode>);
+  }
+
+  setTheme() {
+    colorScheme("#ffb938", "#537f56");
+    toggleDarkMode();
   }
 
   getViews() {

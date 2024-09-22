@@ -1,4 +1,5 @@
 @import url("typography.css");
+@import url("monet.css");
 
 @import url("components/header.css");
 @import url("components/button.css");
@@ -10,18 +11,6 @@
 :root {
   -webkit-user-select: none;
   user-select: none;
-
-  --background-color: #fef1e7;
-  --on-background-color: #1c1717;
-  --surface-color: #fffdfa;
-  --container-color: #537f56;
-  --on-container-color: #ebfff6;
-  --card-color: #ffebc5;
-  --on-card-color: #333333;
-  --outline-color: #cfcec4;
-  --on-outline-color: #7d7c73;
-  --hover-color: rgba(0, 0, 0, 0.15);
-  --aura-color: rgba(255, 161, 48, 0.4);
 }
 
 html {
@@ -30,8 +19,6 @@ html {
 }
 
 body {
-  background-color: var(--background-color);
-  color: var(--on-background-color);
   height: calc(100% - 5rem);
 }
 
