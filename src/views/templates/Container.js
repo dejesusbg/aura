@@ -8,7 +8,7 @@ export default function Container({ habits }) {
   useEffect(() => {
     const updateCards = async () => {
       const fetchedData = await habits;
-      const filteredCards = fetchedData.filter(parseFrequency).map((item) => <Card key={item.id} data={item} />);
+      const filteredCards = fetchedData.filter(parseFrequency).map((item) => <Card key={item.habit_id} data={item} />);
       setCards(filteredCards);
     };
 
