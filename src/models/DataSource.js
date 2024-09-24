@@ -30,10 +30,6 @@ class DataSource {
         if (!db.objectStoreNames.contains("habits")) {
           db.createObjectStore("habits", { keyPath: "habit_id" });
         }
-
-        if (!db.objectStoreNames.contains("completions")) {
-          db.createObjectStore("completions", { keyPath: "completion_id" });
-        }
       };
     });
   }

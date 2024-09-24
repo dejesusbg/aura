@@ -9,17 +9,18 @@ function parseFrequency(habit) {
   const now = new Date();
   const lastUpdated = new Date(habit.updated_at);
 
-  if (habit.frequency === "once") {
+  if (habit.frequency === "" || habit.frequency === "once") {
     return habit.created_at.getTime() === lastUpdated.getTime();
-  }
+  } else {
+    let daysOfWeek = habit.frequency.split("");
 
-  if (habit.frequency === "daily") {
-    return now.getDate() !== lastUpdated.getDate() || habit.created_at.getTime() === lastUpdated.getTime();
-  }
+    try {
+      daysOfWeek = daysOfWeek.map(Number);
+    } catch (error) {
+      return false;
+    }
 
-  if (habit.frequency.startsWith("weekly")) {
-    const daysOfWeek = habit.frequency.slice(6).split("").map(Number); // Extract days of the week
-    const currentDay = now.getDay(); // Sunday = 0, Monday = 1, ..., Saturday = 6
+    const currentDay = now.getDay();
 
     if (daysOfWeek.length > 0) {
       return (
@@ -32,12 +33,6 @@ function parseFrequency(habit) {
       );
     }
   }
-
-  if (habit.frequency === "monthly") {
-    return now.getMonth() !== lastUpdated.getMonth() || habit.created_at.getTime() === lastUpdated.getTime();
-  }
-
-  return false;
 }
 
 export default parseFrequency;

@@ -1,5 +1,4 @@
 import HabitController from "../controllers/mdbHabit";
-import CompletionController from "../controllers/mdbCompletion";
 
 class MainModel {
   constructor() {
@@ -8,8 +7,13 @@ class MainModel {
 
   getData(db) {
     this.data = {
-      habits: HabitController.getAllHabits(db).then(),
-      completions: CompletionController.getAllCompletions(db).then(),
+      controllers: {
+        createHabit: HabitController.createHabit.bind(null, db),
+        getHabit: HabitController.getHabit.bind(null, db),
+        updateStreak: HabitController.updateStreak.bind(null, db),
+        updateHabit: HabitController.updateHabit.bind(null, db),
+        getAllHabits: HabitController.getAllHabits.bind(null, db),
+      },
     };
 
     return this.data;
