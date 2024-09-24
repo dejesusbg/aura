@@ -28,10 +28,8 @@ export default function Container({ habits, createCompletion }) {
 
   return (
     <main>
-      <div id="container">
-        <h4>{date}</h4>
-        {cards}
-      </div>
+      <h4>{date}</h4>
+      {cards}
     </main>
   );
 }
