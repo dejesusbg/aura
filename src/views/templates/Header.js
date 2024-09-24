@@ -1,25 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-const image = {
-  url: "images/logo.png",
-  alt: "logo",
-};
-
-export default function Header({ completions }) {
-  const [balance, setBalance] = useState(0);
+export default function Header({ balance }) {
   const [displayBalance, setDisplayBalance] = useState("ツ");
-
-  useEffect(() => {
-    const updateBalance = async () => {
-      if (completions) {
-        const fetchedData = await completions;
-        const totalPoints = fetchedData.reduce((sum, completion) => sum + completion.points, 0);
-        setBalance(totalPoints);
-      }
-    };
-
-    updateBalance();
-  }, [completions]);
 
   useEffect(() => {
     const animateBalance = () => {
@@ -54,7 +36,7 @@ export default function Header({ completions }) {
   return (
     <header>
       <section className="au-header-leading">
-        <img src={image.url} alt={image.alt} draggable="false" />
+        <img src="images/logo.png" alt="logo" draggable="false" />
       </section>
       <section className="au-header-trailing">{displayText}</section>
     </header>

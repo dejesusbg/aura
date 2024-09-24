@@ -55,7 +55,6 @@ export default function Edit({ createHabit, updateHabit, getHabit }) {
             type="select"
             label="select days to repeat:"
             values={weekdays}
-            required={true}
             options={{ multiple: true, size: 7 }}
           />
         </div>
