@@ -1,48 +1,52 @@
 form {
-  display: flex;
   width: 100%;
-  justify-content: space-between;
-  gap: 0.5rem 1.5rem;
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
 }
 
-.au-form-group {
+div.au-form-group {
   flex: 40%;
 }
 
 @media screen and (max-width: 600px) {
-  .au-form-group {
+  form {
+    margin: auto;
+  }
+
+  div.au-form-group {
     flex: 100%;
   }
 }
 
-.au-form-button {
-  display: flex;
-  flex: 100%;
-  align-items: flex-end;
+div.au-form-button {
   margin: 0.5rem 0;
+  display: flex;
   flex-direction: column;
+  align-items: flex-end;
+  flex: 100%;
 }
 
-.au-form-group label {
-  display: block;
+div.au-form-group label {
   margin: 0 0 0.5rem 0.25rem;
+  display: block;
 }
 
 input[type="text"],
 input[type="number"],
 textarea,
 select {
-  display: block;
   width: 100%;
   padding: 0.75rem;
   border: 1px solid var(--color-outline);
-  box-sizing: border-box;
-  color: var(--color-on-background);
-  text-overflow: ellipsis;
   border-radius: 0.5rem;
+  box-sizing: border-box;
+  display: block;
+  color: var(--color-on-background);
   background-color: var(--color-surface);
+  text-overflow: ellipsis;
 }
 
 textarea {
@@ -53,9 +57,9 @@ input[type="text"]:focus,
 input[type="number"]:focus,
 textarea:focus,
 select:focus {
-  outline: none;
-  box-shadow: 0 0 0.2rem var(--color-tertiary);
   border-color: var(--color-tertiary);
+  box-shadow: 0 0 0.2rem var(--color-tertiary);
+  outline: none;
 }
 
 select[multiple] {

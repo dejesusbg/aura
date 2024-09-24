@@ -1,27 +1,27 @@
 header {
-  display: flex;
   position: fixed;
-  width: 8rem;
-  height: calc(100% - 12rem);
-  padding: 1.5rem;
-  align-items: center;
-  gap: 1rem;
-  flex-direction: column;
-  background-color: var(--color-background);
-  left: 0;
   top: 0;
+  left: 0;
+  width: 7.5rem;
+  height: calc(100% - 13rem);
+  padding: 3rem 1rem 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-background);
+  z-index: 1;
+  gap: 1rem;
 }
 
 header section.au-header-leading img {
   height: 6rem;
-  padding: 1.5rem;
 }
 
 header section.au-header-trailing {
-  color: var(--color-on-secondary-container);
-  padding-left: 0.5rem;
-  margin-right: auto;
   margin-top: auto;
+  margin-right: auto;
+  padding-left: 0.5rem;
+  color: var(--color-on-secondary-container);
 }
 
 @media screen and (max-width: 600px) {
@@ -29,8 +29,8 @@ header section.au-header-trailing {
     width: calc(100% - 3rem);
     height: min-content;
     padding: 1.5rem;
-    justify-content: flex-end;
     flex-direction: row;
+    justify-content: flex-end;
   }
 
   header section.au-header-leading {
@@ -38,9 +38,9 @@ header section.au-header-trailing {
   }
 
   header section.au-header-trailing span {
-    line-height: 1.5rem;
     font-size: 1.25rem;
     font-weight: 500;
+    line-height: 1.5rem;
   }
 
   header section.au-header-trailing span.au-text-l::after {

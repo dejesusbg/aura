@@ -4,17 +4,28 @@ export default function InputField({
   id,
   value,
   type = "text",
+  placeholder = id,
   label = `${id}:`,
   values = [],
-  options = {},
-  groupOptions = {},
   required = false,
   onChange,
+  options = {},
+  groupOptions = {},
 }) {
   const renderInput = () => {
     switch (type) {
       case "textarea":
-        return <textarea id={id} name={id} value={value} {...options} required={required} onChange={onChange} />;
+        return (
+          <textarea
+            id={id}
+            name={id}
+            placeholder={placeholder}
+            value={value}
+            required={required}
+            onChange={onChange}
+            {...options}
+          />
+        );
 
       case "select":
         return (
@@ -29,7 +40,16 @@ export default function InputField({
 
       default:
         return (
-          <input type={type} id={id} name={id} value={value} {...options} required={required} onChange={onChange} />
+          <input
+            type={type}
+            id={id}
+            name={id}
+            placeholder={placeholder}
+            value={value}
+            required={required}
+            onChange={onChange}
+            {...options}
+          />
         );
     }
   };
