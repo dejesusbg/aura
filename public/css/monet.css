@@ -1,7 +1,7 @@
 body {
-  background: var(--color-background);
-  color: var(--color-on-background);
   --aura: rgba(255, 161, 48, 0.4);
+  color: var(--color-on-background);
+  background: var(--color-background);
 }
 
 body.light {

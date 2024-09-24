@@ -1,13 +1,13 @@
 button {
-  display: flex;
   height: 2.75rem;
   border: none;
-  cursor: pointer;
-  align-items: center;
-  background-color: transparent;
-  justify-content: center;
   border-radius: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 button.au-button-icon {
@@ -17,8 +17,8 @@ button.au-button-icon {
 
 button.au-button-text {
   padding: 0 1rem;
+  color: var(--color-on-tertiary);
   background-color: var(--color-tertiary);
-  color: var(--color-on-tertiary)
 }
 
 button:hover {

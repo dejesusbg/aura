@@ -1,15 +1,15 @@
 div.au-card {
-  display: flex;
+  overflow: hidden;
   height: min-content;
   margin: 0.5rem 0.25rem;
   padding: 0.75rem 1.25rem;
-  overflow: hidden;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   border-radius: 1rem;
-  background-color: var(--color-surface-e4);
+  display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-surface-e3);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   gap: 0.5rem;
 }
 
@@ -18,8 +18,8 @@ div.au-card div.au-main-card {
 }
 
 div.au-card div.au-main-card * {
-  display: block;
   margin: 0.25rem 0;
+  display: block;
 }
 
 body.light div.au-card button {
