@@ -4,7 +4,6 @@ import Button from "./Button";
 const actions = [
   { text: "add", handleClick: () => (window.location.href = "/edit?id=new") },
   { text: "refresh", handleClick: () => window.location.reload() },
-  { text: "brightness_4", handleClick: () => toggleDarkMode() },
 ];
 
 const navigation = [
@@ -20,14 +19,19 @@ export default function Footer() {
   const navButtons = navigation.filter((nav) => nav.href !== path);
 
   return (
-    <footer>
-      <Button key="aura" href="/home" text="aura" />
-      {actButtons.map(({ text, handleClick }) => (
-        <Button key={text} className="icon" onClick={handleClick} text={text} />
-      ))}
-      {navButtons.map(({ text, href }) => (
-        <Button key={text} className="icon" href={href} text={text} />
-      ))}
-    </footer>
+    <>
+      <footer>
+        <span className="au-text-display au-text-title">auraby</span>
+        <div id="au-footer-actions">
+          {actButtons.map(({ text, handleClick }) => (
+            <Button key={text} className="icon" onClick={handleClick} text={text} />
+          ))}
+          <Button key="dark_mode" className="icon" onClick={toggleDarkMode} text="dark_mode" />
+          {navButtons.map(({ text, href }) => (
+            <Button key={text} className="icon" href={href} text={text} />
+          ))}
+        </div>
+      </footer>
+    </>
   );
 }

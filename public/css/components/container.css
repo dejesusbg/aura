@@ -1,11 +1,21 @@
 main {
   display: flex;
-  height: calc(100% - 10rem);
-  margin: 11rem 1rem 0;
-  padding-bottom: 6rem;
+  margin: 1rem;
+  padding: 1rem 1rem 10.5rem 10.5rem;
+  border-radius: 1rem;
+  overflow-y: auto;
   flex-direction: column;
+  border-radius: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+  main {
+    padding: 3rem 0.5rem 15rem 0.5rem;
+  }
 }
 
 main > h4 {
   margin: 1rem;
+  text-align: end;
+  color: var(--color-on-secondary-container);
 }

@@ -8,7 +8,7 @@ export default function History({ habits, completions }) {
     const createCards = (fetchedCompletions, fetchedHabits) => {
       return fetchedCompletions.map((completion) => {
         const habit = fetchedHabits.find((habit) => habit.habit_id === completion.habit_id);
-        return <Card key={completion.habit_id} data={{ ...completion, ...habit }} />;
+        return <Card key={completion.completion_id} data={{ ...completion, ...habit }} />;
       });
     };
 

@@ -1,31 +1,60 @@
 footer {
   display: flex;
   position: fixed;
-  height: 3rem;
-  padding: 0 1rem 0 0.75rem;
-  color: var(--color-on-tertiary);
-  align-items: center;
-  justify-content: center;
-  bottom: 1rem;
-  right: 1rem;
+  width: calc(100% - 4rem);
+  padding: 2rem;
+  align-items: end;
+  justify-content: space-between;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-background);
+}
+
+footer span.au-text-display {
+  color: var(--color-on-secondary-container);
+}
+
+div#au-footer-actions {
+  padding: 0.125rem 1rem 0.125rem 0.75rem;
   border-radius: 1rem;
+  white-space: nowrap;
+}
+
+div#au-footer-actions button {
+  display: inline-flex;
+}
+
+@media screen and (max-width: 600px) {
+  footer {
+    align-items: center;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding-top: 1.5rem;
+  }
+
+  div#au-footer-actions {
+    padding: 0.25rem 1rem 0.25rem 0.75rem;
+  }
+
+  div#au-footer-actions button {
+    margin: 0 0.25rem;
+  }
+}
+
+body.light #au-footer-actions,
+body.light #au-footer-actions button {
   background-color: var(--color-tertiary);
 }
 
-body.light footer,
-body.light footer button {
-  background-color: var(--color-tertiary);
-}
-
-body.light footer > button > span {
+body.light #au-footer-actions button span {
   color: var(--color-on-tertiary);
 }
 
-body.dark footer,
-body.dark footer button {
+body.dark #au-footer-actions,
+body.dark #au-footer-actions button {
   background-color: var(--color-tertiary-container);
 }
 
-body.dark footer > button > span {
+body.dark #au-footer-actions button span {
   color: var(--color-on-tertiary-container);
 }
