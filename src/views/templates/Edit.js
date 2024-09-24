@@ -2,19 +2,14 @@ import React, { useState, useEffect, useRef } from "react";
 import Button from "./Button";
 import InputField from "./InputField";
 
-const frequencies = ["once", "daily", "weekly", "monthly"];
-const days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+const weekdays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
 
-function getFrequencies(frequency, days) {
-  if (frequency === "weekly") {
-    return frequency + days.map((day, index) => (days.includes(day) ? index : null)).join("");
-  }
-  return frequency;
+function getFrequencies(days) {
+  return weekdays.map((day, index) => (days.includes(day) ? index : null)).join("");
 }
 
 export default function Edit({ createHabit, updateHabit, getHabit }) {
   const [card, setCard] = useState(null);
-  const weeklyDaysRef = useRef();
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -33,7 +28,7 @@ export default function Edit({ createHabit, updateHabit, getHabit }) {
     const days = Array.from(e.target.days.selectedOptions).map((option) => option.value);
     const name = e.target.name.value;
     const description = e.target.description.value;
-    const frequency = getFrequencies(e.target.frequency.value, days);
+    const frequency = getFrequencies(days);
     const points = parseInt(e.target.points.value);
 
     if (card.id === "new") {
@@ -45,31 +40,23 @@ export default function Edit({ createHabit, updateHabit, getHabit }) {
     window.location.href = "/";
   };
 
-  const handleFrequencyChange = (e) => {
-    if (e.target.value === "weekly") {
-      weeklyDaysRef.current.style.display = "block";
-    } else {
-      weeklyDaysRef.current.style.display = "none";
-    }
-  };
-
   if (!card) return null;
 
   return (
     <main>
       <form onSubmit={handleSubmit}>
-        <InputField id="name" required={true} />
-        <InputField id="description" type="textarea" options={{ rows: 1 }} required={true} />
-        <InputField id="points" type="number" required={true} />
-        <InputField id="frequency" type="select" values={frequencies} onChange={handleFrequencyChange} />
+        <InputField id="name" label="" required={true} />
+        <InputField id="points" label="" type="number" required={true} />
+        <InputField id="description" label="" type="textarea" options={{ rows: 1 }} />
 
-        <div ref={weeklyDaysRef} style={{ display: "none" }}>
+        <div id="weekly-days">
           <InputField
             id="days"
             type="select"
-            label="select days:"
-            values={days}
-            options={{ multiple: true, size: 1 }}
+            label="select days to repeat:"
+            values={weekdays}
+            required={true}
+            options={{ multiple: true, size: 7 }}
           />
         </div>
 

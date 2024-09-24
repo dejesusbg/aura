@@ -1,17 +1,24 @@
 footer {
-  display: flex;
   position: fixed;
-  width: calc(100% - 4rem);
-  padding: 2rem;
-  align-items: end;
-  justify-content: space-between;
   bottom: 0;
   left: 0;
+  width: calc(100% - 4rem);
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
   background-color: var(--color-background);
 }
 
 footer span.au-text-display {
   color: var(--color-on-secondary-container);
+  cursor: pointer;
+}
+
+footer span.au-text-display:hover {
+  text-decoration: underline;
+  color: var(--color-on-tertiary-container);
+  text-underline-offset: 0.5rem;
 }
 
 div#au-footer-actions {
@@ -26,10 +33,10 @@ div#au-footer-actions button {
 
 @media screen and (max-width: 600px) {
   footer {
-    align-items: center;
-    flex-direction: column;
-    gap: 1.25rem;
     padding-top: 1.5rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
   }
 
   div#au-footer-actions {

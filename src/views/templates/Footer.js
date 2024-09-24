@@ -18,10 +18,14 @@ export default function Footer() {
   const actButtons = path === "/" ? actions : [];
   const navButtons = navigation.filter((nav) => nav.href !== path);
 
+  const handleClickTitle = () => (window.location.href = "/home");
+
   return (
     <>
       <footer>
-        <span className="au-text-display au-text-title">auraby</span>
+        <span className="au-text-display au-text-title" onClick={handleClickTitle}>
+          auraby
+        </span>
         <div id="au-footer-actions">
           {actButtons.map(({ text, handleClick }) => (
             <Button key={text} className="icon" onClick={handleClick} text={text} />

@@ -46,10 +46,10 @@ export default function Header({ completions }) {
   }, [balance]);
 
   const path = window.location.pathname;
-  const name = path.replace("/", "");
+  const name = `${path}/`;
 
   const displayText =
-    path === "/" ? <span className="au-text-l">{displayBalance}</span> : <span className="au-text-m">{path}</span>;
+    path === "/" ? <span className="au-text-l">{displayBalance}</span> : <span className="au-text-m">{name}</span>;
 
   return (
     <header>
