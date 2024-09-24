@@ -12,10 +12,6 @@ div.au-form-group {
 }
 
 @media screen and (max-width: 600px) {
-  form {
-    margin: auto;
-  }
-
   div.au-form-group {
     flex: 100%;
   }
