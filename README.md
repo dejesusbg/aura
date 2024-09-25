@@ -4,7 +4,7 @@
 
 ## Features
 
-- Track daily, weekly, and monthly habits.
+- Track daily and weekly habits.
 - Assign points for habit completion.
 - Redeem accumulated points for rewards.
 - Responsive user interface built with HTML, CSS, and JavaScript.
