@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "./Button";
+import { TimerWidget } from "./Widget";
 
 export default function Footer() {
+  const [isActiveWidget, setActiveWidget] = useState(false);
   const path = window.location.pathname;
 
-  const actions = [{ text: "add", handleClick: () => (window.location.href = "/edit?id=new") }];
+  const actions = [
+    { text: "add", handleClick: () => (window.location.href = "/edit?id=new") },
+    { text: "timer", handleClick: () => setActiveWidget(true) },
+  ];
 
   const navigation = [
     { text: "home", href: "/" },
@@ -16,11 +21,7 @@ export default function Footer() {
   const navButtons = navigation.filter((nav) => nav.href !== path);
 
   const handleClickTitle = () => (window.location.href = "/home");
-
-  const handleClickTheme = () => {
-    toggleDarkMode();
-    localStorage.setItem("theme", document.body.classList[0]);
-  };
+  const closeWidget = () => setActiveWidget(false);
 
   return (
     <>
@@ -29,13 +30,18 @@ export default function Footer() {
           auraby
         </span>
         <div id="au-footer-actions">
-          {actButtons.map(({ text, handleClick }) => (
-            <Button key={text} className="icon" onClick={handleClick} text={text} />
-          ))}
-          <Button key="dark_mode" className="icon" onClick={handleClickTheme} text="dark_mode" />
-          {navButtons.map(({ text, href }) => (
-            <Button key={text} className="icon" href={href} text={text} />
-          ))}
+          {isActiveWidget ? (
+            <TimerWidget closeWidget={closeWidget} />
+          ) : (
+            <>
+              {actButtons.map(({ text, handleClick }) => (
+                <Button key={text} className="icon" onClick={handleClick} text={text} />
+              ))}
+              {navButtons.map(({ text, href }) => (
+                <Button key={text} className="icon" href={href} text={text} />
+              ))}
+            </>
+          )}
         </div>
       </footer>
     </>

@@ -22,7 +22,7 @@ footer span.au-text-display:hover {
 }
 
 div#au-footer-actions {
-  padding: 0.125rem 1rem 0.125rem 0.75rem;
+  padding: 0.125rem 0.75rem;
   border-radius: 1rem;
   white-space: nowrap;
 }
@@ -40,7 +40,7 @@ div#au-footer-actions button {
   }
 
   div#au-footer-actions {
-    padding: 0.25rem 1rem 0.25rem 0.75rem;
+    padding: 0.25rem 0.75rem;
   }
 
   div#au-footer-actions button {
