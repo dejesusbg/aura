@@ -16,9 +16,5 @@ export default function History({ getAllHabits }) {
     fetchData();
   }, [habits]);
 
-  return (
-    <main>
-      <div id="container">{cards}</div>
-    </main>
-  );
+  return <div id="container">{cards}</div>;
 }

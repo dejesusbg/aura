@@ -43,26 +43,24 @@ export default function Edit({ createHabit, updateHabit, getHabit }) {
   if (!card) return null;
 
   return (
-    <main>
-      <form onSubmit={handleSubmit}>
-        <InputField id="name" label="" required={true} />
-        <InputField id="points" label="" type="number" required={true} />
-        <InputField id="description" label="" type="textarea" options={{ rows: 1 }} />
+    <form onSubmit={handleSubmit}>
+      <InputField id="name" label="" required={true} />
+      <InputField id="points" label="" type="number" required={true} />
+      <InputField id="description" label="" type="textarea" options={{ rows: 1 }} />
 
-        <div id="weekly-days">
-          <InputField
-            id="days"
-            type="select"
-            label="select days to repeat:"
-            values={weekdays}
-            options={{ multiple: true, size: 7 }}
-          />
-        </div>
+      <div id="weekly-days">
+        <InputField
+          id="days"
+          type="select"
+          label="select days to repeat:"
+          values={weekdays}
+          options={{ multiple: true, size: 7 }}
+        />
+      </div>
 
-        <div className="au-form-button">
-          <Button className="text" type="submit" text="save habit" />
-        </div>
-      </form>
-    </main>
+      <div className="au-form-button">
+        <Button className="text" type="submit" text="save habit" />
+      </div>
+    </form>
   );
 }

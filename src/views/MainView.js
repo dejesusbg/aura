@@ -3,9 +3,11 @@ import { createRoot } from "react-dom/client";
 
 import Header from "./templates/Header";
 import Container from "./templates/Container";
-import Footer from "./templates/Footer";
 import Edit from "./templates/Edit";
 import History from "./templates/History";
+import Settings from "./templates/Settings";
+import Home from "./templates/Home";
+import Footer from "./templates/Footer";
 
 class MainView {
   constructor(data, getData) {
@@ -34,34 +36,39 @@ class MainView {
   }
 
   setTheme() {
+    const theme =
+      localStorage.getItem("theme") ||
+      (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+
+    document.body.className = theme;
+    localStorage.setItem("theme", theme);
+
     colorScheme("#ff8d02", "#537f56");
-    this.applyTheme();
-  }
-
-  applyTheme() {
-    const theme = localStorage.getItem("theme");
-
-    if (theme) {
-      document.body.classList.add(theme);
-      document.body.classList.remove(theme === "dark" ? "light" : "dark");
-    } else {
-      const isDarkMode = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-      document.body.classList.add(isDarkMode ? "dark" : "light");
-    }
-
-    localStorage.setItem("theme", document.body.classList[0]);
   }
 
   getViews() {
     const controllers = this.data.controllers;
+    const path = this.path;
+
+    if (path === "/") {
+      return <MainLayout controllers={controllers} />;
+    }
 
     const viewMap = {
-      "/": <MainLayout controllers={controllers} />,
-      "/edit": <EditLayout controllers={controllers} />,
-      "/history": <HistoryLayout controllers={controllers} />,
+      "/edit": <Edit {...controllers} />,
+      "/history": <History {...controllers} />,
+      "/settings": <Settings {...controllers} />,
+      "/home": <Home />,
+      default: <></>,
     };
 
-    return viewMap[this.path] || viewMap.default;
+    return (
+      <>
+        <Header />
+        <main>{viewMap[this.path] || viewMap.default}</main>
+        <Footer />
+      </>
+    );
   }
 }
 
@@ -85,47 +92,9 @@ function MainLayout({ controllers }) {
   return (
     <>
       <Header balance={balance} />
-      <Container {...controllers} />
-      <Footer />
-    </>
-  );
-}
-
-function EditLayout({ controllers }) {
-  return (
-    <>
-      <Header />
-      <Edit {...controllers} />
-      <Footer />
-    </>
-  );
-}
-
-function HistoryLayout({ controllers }) {
-  return (
-    <>
-      <Header />
-      <History {...controllers} />
-      <Footer />
-    </>
-  );
-}
-
-function SettingsLayout({ controllers }) {
-  return (
-    <>
-      <Header />
-      <Settings {...controllers} />
-      <Footer />
-    </>
-  );
-}
-
-function HomeLayout() {
-  return (
-    <>
-      <Header />
-      <Home />
+      <main>
+        <Container {...controllers} />
+      </main>
       <Footer />
     </>
   );

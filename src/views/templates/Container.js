@@ -47,11 +47,9 @@ export default function Container({ getAllHabits, updateStreak, updateBalance })
   const date = new Intl.DateTimeFormat("en-UK", dateOptions).format(new Date());
 
   return (
-    <main>
-      <div id="container">
-        <h4>{date}</h4>
-        {cards}
-      </div>
-    </main>
+    <div id="container">
+      <h4>{date}</h4>
+      {cards}
+    </div>
   );
 }

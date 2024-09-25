@@ -12,6 +12,7 @@ class MainModel {
         getHabit: HabitController.getHabit.bind(null, db),
         updateStreak: HabitController.updateStreak.bind(null, db),
         updateHabit: HabitController.updateHabit.bind(null, db),
+        deleteHabit: HabitController.deleteHabit.bind(null, db),
         getAllHabits: HabitController.getAllHabits.bind(null, db),
       },
     };

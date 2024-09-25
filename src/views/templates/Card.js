@@ -11,7 +11,7 @@ export default function Card({ data, removeCard, showButton = true }) {
 
   return (
     <div id={habit_id} className="au-card">
-      <div className="au-main-card" onClick={handleEdit}>
+      <div className="au-main-card">
         <span className="au-text-m">{name}</span>
         {description && <span className="au-text-p">{description}</span>}
         <span className="au-text-xs">{streak}</span>
