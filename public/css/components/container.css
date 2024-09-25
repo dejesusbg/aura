@@ -9,27 +9,30 @@ main {
   flex-direction: column;
 }
 
-main div#container {
+main > div {
   padding-bottom: 10rem;
 }
 
 @media screen and (max-width: 600px) {
   main {
-    top: 4rem;
+    top: 5rem;
     bottom: unset;
     left: 0;
-    width: calc(100% - 5rem);
+    width: calc(100% - 4rem);
     height: calc(100% - 18rem);
-    padding: 0 2.5rem;
+    padding: 0 2rem;
   }
 
-  main div#container {
+  main > div {
     padding-bottom: 14rem;
   }
 }
 
 main h4 {
+  color: var(--color-on-secondary-container);
+}
+
+main > div#container > h4 {
   margin: 1rem;
   text-align: end;
-  color: var(--color-on-secondary-container);
 }
