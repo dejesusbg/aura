@@ -1,13 +1,16 @@
 import React from "react";
 import Button from "./Button";
+import { useNavigate } from "react-router-dom";
 
-export default function Card({ data, removeCard, showButton = true }) {
+export default function Card({ data, removeCard }) {
+  const navigate = useNavigate();
+
   const { habit_id, name, description, points, streak } = data;
-
-  const handleEdit = () => (window.location.href = `/edit?id=${habit_id}`);
-  const handleClick = () => removeCard(habit_id, points);
-
+  const handleEdit = () => navigate(`/edit/${habit_id}`);
+  const handleRemove = () => removeCard(habit_id, points);
   const pointsText = `${points > 0 ? "+" : ""}${points}`;
+
+  const shouldShowPointsButton = typeof removeCard === "function";
 
   return (
     <div id={habit_id} className="au-card">
@@ -16,7 +19,7 @@ export default function Card({ data, removeCard, showButton = true }) {
         {description && <span className="au-text-p">{description}</span>}
         <span className="au-text-xs">{streak}</span>
       </div>
-      {showButton && <Button text={pointsText} onClick={handleClick} />}
+      {shouldShowPointsButton && <Button text={pointsText} onClick={handleRemove} />}
       <Button className="icon" text="edit" onClick={handleEdit} />
     </div>
   );

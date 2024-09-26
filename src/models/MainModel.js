@@ -6,15 +6,10 @@ class MainModel {
   }
 
   getData(db) {
+    const methods = ["createHabit", "getHabit", "updateStreak", "updateHabit", "deleteHabit", "getAllHabits"];
+
     this.data = {
-      controllers: {
-        createHabit: HabitController.createHabit.bind(null, db),
-        getHabit: HabitController.getHabit.bind(null, db),
-        updateStreak: HabitController.updateStreak.bind(null, db),
-        updateHabit: HabitController.updateHabit.bind(null, db),
-        deleteHabit: HabitController.deleteHabit.bind(null, db),
-        getAllHabits: HabitController.getAllHabits.bind(null, db),
-      },
+      controllers: Object.fromEntries(methods.map((method) => [method, HabitController[method].bind(null, db)])),
     };
 
     return this.data;

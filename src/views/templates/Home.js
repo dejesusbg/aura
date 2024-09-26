@@ -1,6 +1,9 @@
 import React from "react";
 
-export default function Home() {
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+
+function Container() {
   return (
     <div id="home">
       <section id="intro">
@@ -93,5 +96,17 @@ export default function Home() {
         </p>
       </section>
     </div>
+  );
+}
+
+export default function HomeLayout() {
+  return (
+    <>
+      <Header />
+      <main>
+        <Container />
+      </main>
+      <Footer />
+    </>
   );
 }

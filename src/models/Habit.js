@@ -5,7 +5,6 @@ class Habit {
     this.description = description;
     this.points = points;
     this.frequency = frequency;
-
     this.streak = 0;
     this.created_at = new Date();
     this.updated_at = new Date();
@@ -13,44 +12,44 @@ class Habit {
   }
 
   static async save(db, habit) {
-    const transaction = db.transaction("habits", "readwrite");
-    const store = transaction.objectStore("habits");
-
     return new Promise((resolve, reject) => {
+      const transaction = db.transaction("habits", "readwrite");
+      const store = transaction.objectStore("habits");
       const request = store.put(habit);
+
       request.onsuccess = () => resolve(habit);
       request.onerror = (e) => reject(e);
     });
   }
 
   static async getById(db, habit_id) {
-    const transaction = db.transaction("habits", "readonly");
-    const store = transaction.objectStore("habits");
-
     return new Promise((resolve, reject) => {
+      const transaction = db.transaction("habits", "readonly");
+      const store = transaction.objectStore("habits");
       const request = store.get(habit_id);
+
       request.onsuccess = () => resolve(request.result);
       request.onerror = (e) => reject(e);
     });
   }
 
   static async delete(db, habit_id) {
-    const transaction = db.transaction("habits", "readwrite");
-    const store = transaction.objectStore("habits");
-
     return new Promise((resolve, reject) => {
+      const transaction = db.transaction("habits", "readwrite");
+      const store = transaction.objectStore("habits");
       const request = store.delete(habit_id);
+
       request.onsuccess = () => resolve(true);
       request.onerror = (e) => reject(e);
     });
   }
 
   static async getAll(db) {
-    const transaction = db.transaction("habits", "readonly");
-    const store = transaction.objectStore("habits");
-
     return new Promise((resolve, reject) => {
+      const transaction = db.transaction("habits", "readonly");
+      const store = transaction.objectStore("habits");
       const request = store.getAll();
+
       request.onsuccess = () => resolve(request.result);
       request.onerror = (e) => reject(e);
     });

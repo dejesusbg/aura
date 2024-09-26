@@ -32,7 +32,7 @@ main h4 {
   color: var(--color-on-secondary-container);
 }
 
-main > div#container > h4 {
+main > div#main > h4 {
   margin: 1rem;
   text-align: end;
 }

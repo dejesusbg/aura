@@ -1,6 +1,9 @@
 import React from "react";
 
-function SettingsCard({ icon, name, description, onClick }) {
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+
+function SingleSetting({ icon, name, description, onClick }) {
   return (
     <div className="au-card" onClick={onClick}>
       <span className="material-symbols-rounded">{icon}</span>
@@ -12,7 +15,7 @@ function SettingsCard({ icon, name, description, onClick }) {
   );
 }
 
-export default function Settings({ getAllHabits, deleteHabit }) {
+function Container({ getAllHabits, deleteHabit }) {
   const handleClickTheme = () => {
     toggleDarkMode();
     localStorage.setItem("theme", document.body.classList[0]);
@@ -25,18 +28,30 @@ export default function Settings({ getAllHabits, deleteHabit }) {
 
   return (
     <div id="settings">
-      <SettingsCard
+      <SingleSetting
         icon="dark_mode"
         name="change theme"
         description="turn on or off dark mode"
         onClick={handleClickTheme}
       />
-      <SettingsCard
+      <SingleSetting
         icon="delete"
         name="delete all habits"
         description="this action cannot be undone"
         onClick={handleClickDelete}
       />
     </div>
+  );
+}
+
+export default function SettingsLayout({ controllers }) {
+  return (
+    <>
+      <Header />
+      <main>
+        <Container {...controllers} />
+      </main>
+      <Footer />
+    </>
   );
 }

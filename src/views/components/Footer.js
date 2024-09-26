@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import Button from "./Button";
-import { TimerWidget } from "./Widget";
+import { EmojiWidget, TimerWidget } from "./Widget";
+import { useNavigate } from "react-router-dom";
 
 export default function Footer() {
-  const [isActiveWidget, setActiveWidget] = useState(false);
+  const navigate = useNavigate();
+
+  const [isActiveWidget, setActiveWidget] = useState(null);
   const path = window.location.pathname;
 
   const actions = [
-    { text: "add", handleClick: () => (window.location.href = "/edit?id=new") },
-    { text: "timer", handleClick: () => setActiveWidget(true) },
+    { text: "add", handleClick: () => navigate("/edit/new") },
+    { text: "timer", handleClick: () => setActiveWidget("timer") },
+    { text: "spa", handleClick: () => setActiveWidget("spa") },
   ];
 
   const navigation = [
@@ -20,8 +24,8 @@ export default function Footer() {
   const actButtons = path === "/" ? actions : [];
   const navButtons = navigation.filter((nav) => nav.href !== path);
 
-  const handleClickTitle = () => (window.location.href = "/home");
-  const closeWidget = () => setActiveWidget(false);
+  const handleClickTitle = () => navigate("/home");
+  const closeWidget = () => setActiveWidget(null);
 
   return (
     <>
@@ -31,14 +35,17 @@ export default function Footer() {
         </span>
         <div id="au-footer-actions">
           {isActiveWidget ? (
-            <TimerWidget closeWidget={closeWidget} />
+            <>
+              {isActiveWidget === "timer" && <TimerWidget closeWidget={closeWidget} />}
+              {isActiveWidget === "spa" && <EmojiWidget closeWidget={closeWidget} />}
+            </>
           ) : (
             <>
               {actButtons.map(({ text, handleClick }) => (
-                <Button key={text} className="icon" onClick={handleClick} text={text} />
+                <Button key={text} className="icon" text={text} onClick={handleClick} />
               ))}
               {navButtons.map(({ text, href }) => (
-                <Button key={text} className="icon" href={href} text={text} />
+                <Button key={text} className="icon" text={text} href={href} />
               ))}
             </>
           )}

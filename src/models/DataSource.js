@@ -1,18 +1,16 @@
 class DataSource {
   constructor() {
     if (!DataSource.instance) {
-      this.db = null;
-      this.dbPromise = this.openDB();
+      this.dbPromise = this.initDB();
       DataSource.instance = this;
     }
-
     return DataSource.instance;
   }
 
-  openDB() {
-    return new Promise((resolve, reject) => {
-      const request = indexedDB.open("AuraDB", 1);
+  async initDB() {
+    const request = indexedDB.open("AuraDB", 1);
 
+    return new Promise((resolve, reject) => {
       request.onerror = (event) => {
         console.error("Database error:", event.target.error);
         reject(event.target.error);
@@ -26,7 +24,6 @@ class DataSource {
 
       request.onupgradeneeded = (event) => {
         const db = event.target.result;
-
         if (!db.objectStoreNames.contains("habits")) {
           db.createObjectStore("habits", { keyPath: "habit_id" });
         }
@@ -40,5 +37,4 @@ class DataSource {
 }
 
 const instance = new DataSource();
-
 export default instance;

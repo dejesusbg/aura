@@ -6,7 +6,6 @@ class HabitController {
   static async createHabit(db, name, description, points, frequency) {
     const habit = new Habit(uniqueId(), name, description, points, frequency);
     await Habit.save(db, habit);
-
     return habit;
   }
 

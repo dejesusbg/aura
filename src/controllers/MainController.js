@@ -5,7 +5,7 @@ class MainController {
   constructor(db) {
     this.db = db;
     this.model = new MainModel();
-    this.view = new MainView(this.model.getData(db), () => this.model.getData(db));
+    this.view = new MainView(this.model.getData(db));
   }
 
   init() {

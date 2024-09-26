@@ -12,6 +12,10 @@ div.au-form-group {
 }
 
 @media screen and (max-width: 600px) {
+  form {
+    padding-bottom: 14rem;
+  }
+  
   div.au-form-group {
     flex: 100%;
   }
@@ -60,6 +64,7 @@ select:focus {
 
 select[multiple] {
   height: auto;
+  overflow: hidden;
 }
 
 #weekly-days {
