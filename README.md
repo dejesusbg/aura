@@ -37,7 +37,7 @@ Start the development server:
 ```bash
 npm start
 ```
-The application should now be able to run at a localhost, you can use "http-server" and you can check it in `http://localhost:8080`.
+The application should now be running and you can check it in `http://localhost:8080`.
 
 ## Deployment
 
