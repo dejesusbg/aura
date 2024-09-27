@@ -57,3 +57,7 @@ body.dark div.au-card button {
   color: var(--color-on-tertiary-container);
   background-color: var(--color-tertiary-container);
 }
+
+div#settings div.au-card {
+  cursor: pointer;
+}
