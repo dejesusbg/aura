@@ -1,21 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "./Button";
 
-function Widget({ children, closeWidget }) {
+function Widget({ children, onClose }) {
   return (
-    <div id="au-widget">
+    <>
       {children}
-      <Button key="close" className="icon" text="close" onClick={closeWidget} />
-    </div>
+      <Button className="icon" text="close" onClick={onClose} />
+    </>
   );
 }
 
-function TimerWidget({ closeWidget }) {
-  return <Widget closeWidget={closeWidget}></Widget>;
+function TimerWidget({ onClose }) {
+  return <Widget onClose={onClose} />;
 }
 
-function EmojiWidget({ closeWidget }) {
-  return <Widget closeWidget={closeWidget}></Widget>;
+function EmojiWidget({ onClose }) {
+  const [emojiData, setEmojiData] = useState(null);
+  const emojis = ["😀", "😱", "😭", "😂"];
+
+  const handleClick = (emoji, e) => {
+    const { left, top } = e.target.getBoundingClientRect();
+    setEmojiData({ emoji, left: left + window.scrollX, top: top + window.scrollY });
+
+    setTimeout(onClose, 750);
+  };
+
+  return (
+    <Widget onClose={onClose}>
+      {emojiData ? (
+        <span className="au-widget-emoji" style={{ left: emojiData.left, top: emojiData.top }}>
+          {emojiData.emoji}
+        </span>
+      ) : (
+        emojis.map((emoji) => (
+          <Button key={emoji} className="emoji" text={emoji} onClick={(e) => handleClick(emoji, e)} />
+        ))
+      )}
+    </Widget>
+  );
 }
 
 export { TimerWidget, EmojiWidget };

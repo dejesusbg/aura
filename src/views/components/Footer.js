@@ -25,7 +25,7 @@ export default function Footer() {
   const navButtons = navigation.filter((nav) => nav.href !== path);
 
   const handleClickTitle = () => navigate("/home");
-  const closeWidget = () => setActiveWidget(null);
+  const handleCloseWidget = () => setActiveWidget(null);
 
   return (
     <>
@@ -36,8 +36,8 @@ export default function Footer() {
         <div id="au-footer-actions">
           {isActiveWidget ? (
             <>
-              {isActiveWidget === "timer" && <TimerWidget closeWidget={closeWidget} />}
-              {isActiveWidget === "spa" && <EmojiWidget closeWidget={closeWidget} />}
+              {isActiveWidget === "timer" && <TimerWidget onClose={handleCloseWidget} />}
+              {isActiveWidget === "spa" && <EmojiWidget onClose={handleCloseWidget} />}
             </>
           ) : (
             <>

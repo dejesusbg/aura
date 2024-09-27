@@ -24,6 +24,7 @@ footer span.au-text-display:hover {
 div#au-footer-actions {
   padding: 0.125rem 0.75rem;
   border-radius: 1rem;
+  display: flex;
   white-space: nowrap;
 }
 
