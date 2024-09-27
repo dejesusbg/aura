@@ -14,8 +14,8 @@ function getFrequencies(array) {
 }
 
 function getDays(str) {
-  const frequencies = str.split("");
-  return weekdays.filter((_, index) => frequencies[index] !== null);
+  const frequencies = str.split("").map(Number);
+  return weekdays.filter((_, index) => frequencies.includes(index));
 }
 
 function Form({ createHabit, updateHabit, getHabit }) {
@@ -48,7 +48,7 @@ function Form({ createHabit, updateHabit, getHabit }) {
     }
   }, [getHabit]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const { name, description } = habitData;
@@ -56,9 +56,9 @@ function Form({ createHabit, updateHabit, getHabit }) {
     const frequency = getFrequencies(e.target.frequency);
 
     if (habitId === "new") {
-      createHabit(name, description, points, frequency);
+      await createHabit(name, description, points, frequency);
     } else {
-      updateHabit(habitId, { name, description, points, frequency });
+      await updateHabit(habitId, { name, description, points, frequency });
     }
 
     navigate("/");
