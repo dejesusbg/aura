@@ -21,7 +21,7 @@ header section.au-header-trailing {
   margin-top: auto;
   margin-right: auto;
   padding-left: 0.5rem;
-  color: var(--color-on-secondary-container);
+  color: var(--color-on-tertiary-container);
 }
 
 @media screen and (max-width: 600px) {

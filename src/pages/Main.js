@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import parseFrequency from "../../lib/parseFrequency";
+import parseFrequency from "../lib/parseFrequency";
 
 import Card from "../components/Card";
 import Header from "../components/Header";
@@ -46,7 +46,7 @@ function Container({ getAllHabits, updateStreak, updateBalance }) {
   );
 }
 
-export default function MainLayout(props) {
+export default function Main(props) {
   const [balance, setBalance] = useState(0);
   const controllers = props.controllers;
 

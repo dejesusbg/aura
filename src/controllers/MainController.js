@@ -1,11 +1,11 @@
 import MainModel from "../models/MainModel";
-import MainView from "../views/MainView";
+import App from "../App";
 
 class MainController {
   constructor(db) {
     this.db = db;
     this.model = new MainModel();
-    this.view = new MainView(this.model.getData(db));
+    this.view = new App(this.model.getData(db));
   }
 
   init() {

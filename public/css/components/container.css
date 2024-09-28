@@ -29,7 +29,7 @@ main > div {
 }
 
 main h4 {
-  color: var(--color-on-secondary-container);
+  color: var(--color-on-tertiary-container);
 }
 
 main > div#main > h4 {

@@ -49,13 +49,13 @@ div.au-card div.au-main-card * {
 }
 
 body.light div.au-card button {
-  color: var(--color-on-tertiary);
-  background-color: var(--color-tertiary);
+  color: var(--color-on-secondary);
+  background-color: var(--color-secondary);
 }
 
 body.dark div.au-card button {
-  color: var(--color-on-tertiary-container);
-  background-color: var(--color-tertiary-container);
+  color: var(--color-on-secondary-container);
+  background-color: var(--color-secondary-container);
 }
 
 div#settings div.au-card {

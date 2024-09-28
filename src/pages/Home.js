@@ -99,7 +99,7 @@ function Container() {
   );
 }
 
-export default function HomeLayout() {
+export default function Home() {
   return (
     <>
       <Header />

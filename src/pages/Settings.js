@@ -2,6 +2,7 @@ import React from "react";
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Theme from "../lib/themeManager";
 
 function SingleSetting({ icon, name, description, onClick }) {
   return (
@@ -16,10 +17,7 @@ function SingleSetting({ icon, name, description, onClick }) {
 }
 
 function Container({ getAllHabits, deleteHabit }) {
-  const handleClickTheme = () => {
-    toggleDarkMode();
-    localStorage.setItem("theme", document.body.classList[0]);
-  };
+  const handleClickTheme = Theme.toggle;
 
   const handleClickDelete = async () => {
     const habits = await getAllHabits();
@@ -44,7 +42,7 @@ function Container({ getAllHabits, deleteHabit }) {
   );
 }
 
-export default function SettingsLayout({ controllers }) {
+export default function Settings({ controllers }) {
   return (
     <>
       <Header />

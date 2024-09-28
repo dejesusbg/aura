@@ -57,8 +57,8 @@ input[type="text"]:focus,
 input[type="number"]:focus,
 textarea:focus,
 select:focus {
-  border-color: var(--color-tertiary);
-  box-shadow: 0 0 0.2rem var(--color-tertiary);
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0.2rem var(--color-secondary);
   outline: none;
 }
 
