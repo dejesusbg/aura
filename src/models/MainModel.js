@@ -1,19 +1,40 @@
-import HabitController from "../controllers/mdbHabit";
-
 class MainModel {
   constructor() {
-    this.data = null;
+    if (!MainModel.instance) {
+      this.dbPromise = this.initDB();
+      MainModel.instance = this;
+    }
+    return MainModel.instance;
   }
 
-  getData(db) {
-    const methods = ["createHabit", "getHabit", "updateStreak", "updateHabit", "deleteHabit", "getAllHabits"];
+  async initDB() {
+    const request = indexedDB.open("AuraDB", 1);
 
-    this.data = {
-      controllers: Object.fromEntries(methods.map((method) => [method, HabitController[method].bind(null, db)])),
-    };
+    return new Promise((resolve, reject) => {
+      request.onerror = (event) => {
+        console.error("Database error:", event.target.error);
+        reject(event.target.error);
+      };
 
-    return this.data;
+      request.onsuccess = (event) => {
+        this.db = event.target.result;
+        console.log("Database opened successfully");
+        resolve(this.db);
+      };
+
+      request.onupgradeneeded = (event) => {
+        const db = event.target.result;
+        if (!db.objectStoreNames.contains("habits")) {
+          db.createObjectStore("habits", { keyPath: "habit_id" });
+        }
+      };
+    });
+  }
+
+  getDBInstance() {
+    return this.dbPromise;
   }
 }
 
-export default MainModel;
+const instance = new MainModel();
+export default instance;

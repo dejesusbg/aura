@@ -11,13 +11,13 @@ footer {
 }
 
 footer span.au-text-display {
-  color: var(--color-on-secondary-container);
+  color: var(--color-on-tertiary-container);
   cursor: pointer;
 }
 
 footer span.au-text-display:hover {
   text-decoration: underline;
-  color: var(--color-on-tertiary-container);
+  color: var(--color-on-secondary-container);
   text-underline-offset: 0.5rem;
 }
 
@@ -51,18 +51,18 @@ div#au-footer-actions button {
 
 body.light #au-footer-actions,
 body.light #au-footer-actions button {
-  background-color: var(--color-tertiary);
+  background-color: var(--color-secondary);
 }
 
 body.light #au-footer-actions button span {
-  color: var(--color-on-tertiary);
+  color: var(--color-on-secondary);
 }
 
 body.dark #au-footer-actions,
 body.dark #au-footer-actions button {
-  background-color: var(--color-tertiary-container);
+  background-color: var(--color-secondary-container);
 }
 
 body.dark #au-footer-actions button span {
-  color: var(--color-on-tertiary-container);
+  color: var(--color-on-secondary-container);
 }

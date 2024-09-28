@@ -1,6 +1,8 @@
 import React from "react";
-import Button from "./Button";
 import { useNavigate } from "react-router-dom";
+
+import Button from "components/button";
+import "./index.css";
 
 export default function Card({ data, removeCard }) {
   const navigate = useNavigate();

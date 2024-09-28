@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-
-import Button from "../components/Button";
-import InputField from "../components/InputField";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import { useNavigate, useParams } from "react-router-dom";
+
+import Button from "components/button";
+import InputField from "components/inputField";
+import Header from "components/header";
+import Footer from "components/footer";
+
+import "styles/edit.css";
 
 const weekdays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
 
@@ -107,7 +109,7 @@ function Form({ createHabit, updateHabit, getHabit }) {
   );
 }
 
-export default function EditLayout({ controllers }) {
+export default function Edit({ controllers }) {
   return (
     <>
       <Header />

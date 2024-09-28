@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import "./index.css";
+
 export default function Header({ balance }) {
   const [displayBalance, setDisplayBalance] = useState("ツ");
 
@@ -36,7 +38,7 @@ export default function Header({ balance }) {
   return (
     <header>
       <section className="au-header-leading">
-        <img src="/images/logo.png" alt="logo" draggable="false" />
+        <img src="/logo.png" alt="logo" draggable="false" />
       </section>
       <section className="au-header-trailing">{displayText}</section>
     </header>

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-import Card from "../components/Card";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Card from "components/card";
+import Header from "components/header";
+import Footer from "components/footer";
 
 function Container({ getAllHabits }) {
   const [cards, setCards] = useState([]);
@@ -22,7 +22,7 @@ function Container({ getAllHabits }) {
   return <div id="container">{cards}</div>;
 }
 
-export default function HistoryLayout({ controllers }) {
+export default function History({ controllers }) {
   return (
     <>
       <Header />

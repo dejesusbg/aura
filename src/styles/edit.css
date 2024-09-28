@@ -1,0 +1,39 @@
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+}
+
+div.au-form-group {
+  flex: 40%;
+}
+
+@media screen and (max-width: 600px) {
+  form {
+    padding-bottom: 14rem;
+  }
+
+  div.au-form-group {
+    flex: 100%;
+  }
+}
+
+div.au-form-button {
+  margin: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex: 100%;
+}
+
+div.au-form-group label {
+  margin: 0 0 0.5rem 0.25rem;
+  display: block;
+}
+
+#weekly-days {
+  flex: 100%;
+}

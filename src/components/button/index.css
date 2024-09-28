@@ -24,8 +24,8 @@ button.au-button-emoji span {
 
 button.au-button-text {
   padding: 0 1rem;
-  color: var(--color-on-tertiary);
-  background-color: var(--color-tertiary);
+  color: var(--color-on-secondary);
+  background-color: var(--color-secondary);
 }
 
 button:hover {

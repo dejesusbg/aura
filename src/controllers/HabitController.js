@@ -1,6 +1,6 @@
-import uniqueId from "../lib/uniqueId";
+import uniqueId from "lib/uniqueId";
 
-import Habit from "../models/Habit";
+import Habit from "models/Habit";
 
 class HabitController {
   static async createHabit(db, name, description, points, frequency) {

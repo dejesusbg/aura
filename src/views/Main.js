@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import parseFrequency from "../../lib/parseFrequency";
+import parseFrequency from "lib/parseFrequency";
 
-import Card from "../components/Card";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Card from "components/card";
+import Header from "components/header";
+import Footer from "components/footer";
 
 function Container({ getAllHabits, updateStreak, updateBalance }) {
   const [habits, setHabits] = useState([]);
@@ -46,9 +46,8 @@ function Container({ getAllHabits, updateStreak, updateBalance }) {
   );
 }
 
-export default function MainLayout(props) {
+export default function Main({controllers}) {
   const [balance, setBalance] = useState(0);
-  const controllers = props.controllers;
 
   useEffect(() => {
     const fetchBalance = async () => {
