@@ -1,6 +1,6 @@
-import React, { StrictMode } from "react";
+import React, { StrictMode, useEffect } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 
 import Theme from "lib/themeManager";
 
@@ -9,6 +9,17 @@ import Edit from "views/Edit";
 import History from "views/History";
 import Settings from "views/Settings";
 import Home from "views/Home";
+
+const Location = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const path = location.pathname;
+    document.title = `aura - ${path.split("/")[1] || "main"}`;
+  }, [location]);
+
+  return null;
+};
 
 class App {
   constructor(controllers) {
@@ -20,11 +31,12 @@ class App {
 
     const app = document.createElement("div");
     document.body.prepend(app);
-    
+
     this.root = createRoot(app);
     this.root.render(
       <StrictMode>
         <Router>
+          <Location />
           <Routes>
             <Route path="/" element={<Main controllers={this.controllers} />} />
             <Route path="/edit/:id" element={<Edit controllers={this.controllers} />} />
