@@ -10,12 +10,12 @@ import History from "views/History";
 import Settings from "views/Settings";
 import Home from "views/Home";
 
-const Location = () => {
+const DocumentTitle = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const path = location.pathname;
-    document.title = `aura - ${path.split("/")[1] || "main"}`;
+    const currentPage = location.pathname.split("/")[1] || "main";
+    document.title = `aura - ${currentPage}`;
   }, [location]);
 
   return null;
@@ -36,7 +36,7 @@ class App {
     this.root.render(
       <StrictMode>
         <Router>
-          <Location />
+          <DocumentTitle />
           <Routes>
             <Route path="/" element={<Main controllers={this.controllers} />} />
             <Route path="/edit/:id" element={<Edit controllers={this.controllers} />} />

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import parseFrequency from "lib/parseFrequency";
 
-import Card from "components/card";
+import HabitCard from "components/habitCard";
 import Header from "components/header";
 import Footer from "components/footer";
 
@@ -29,7 +29,9 @@ function Container({ getAllHabits, updateStreak, updateBalance }) {
   }, [getAllHabits]);
 
   const filteredHabits = habits.filter(parseFrequency);
-  const cards = filteredHabits.map((habit) => <Card key={habit.habitId} data={habit} onRemove={handleRemoveCard} />);
+  const cards = filteredHabits.map((habit) => (
+    <HabitCard key={habit.habitId} data={habit} onRemove={handleRemoveCard} />
+  ));
 
   const formattedDate = new Intl.DateTimeFormat("en-UK", {
     day: "numeric",
@@ -59,7 +61,7 @@ export default function Main({ controllers }) {
   }, [controllers]);
 
   controllers.updateBalance = (increment) => setBalance((prev) => prev + increment);
-  
+
   return (
     <>
       <Header balance={balance} />
