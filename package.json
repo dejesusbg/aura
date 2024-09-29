@@ -7,7 +7,7 @@
     "watch": "webpack --mode development --watch",
     "build": "webpack --mode production",
     "server": "node server.js",
-    "start": "start npm run watch & start npm run server"
+    "start": "concurrently \"npm run watch\" \"npm run server\""
   },
   "keywords": [],
   "author": "",
@@ -19,6 +19,7 @@
     "@babel/preset-react": "^7.24.7",
     "babel-loader": "^9.2.1",
     "chroma-js": "^3.1.1",
+    "concurrently": "^9.0.1",
     "css-loader": "^7.1.2",
     "express": "^4.21.0",
     "mini-css-extract-plugin": "^2.9.1",
