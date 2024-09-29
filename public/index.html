@@ -6,10 +6,20 @@
     <title>aura</title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <script type="module" src="/js/bundle.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/sw.js", { scope: "/" }).then(function (registration) {
+          console.log("Service Worker Registered");
+        });
+        navigator.serviceWorker.ready.then(function (registration) {
+          console.log("Service Worker Ready");
+        });
+      }
+    </script>
   </body>
 </html>
