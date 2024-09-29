@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import Card from "components/card";
+import HabitCard from "components/habitCard";
 import Header from "components/header";
 import Footer from "components/footer";
 
@@ -10,10 +10,9 @@ function Container({ getAllHabits }) {
   const habits = getAllHabits();
 
   useEffect(() => {
-
     const fetchData = async () => {
       const fetchedData = await habits;
-      const cards = fetchedData.map((item) => <Card key={item.habitId} data={item} />);
+      const cards = fetchedData.map((item) => <HabitCard key={item.habitId} data={item} />);
       setCards(cards);
     };
 

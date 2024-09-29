@@ -7,18 +7,9 @@ import Header from "components/header";
 import Footer from "components/footer";
 
 import "styles/edit.css";
+import { daysToFrequencies, frequenciesToDays } from "lib/parseFrequency";
 
 const weekdays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
-
-function getFrequencies(array) {
-  const days = Array.from(array.selectedOptions).map((option) => option.value);
-  return weekdays.map((day, index) => (days.includes(day) ? index : null)).join("");
-}
-
-function getDays(str) {
-  const frequencies = str.split("").map(Number);
-  return weekdays.filter((_, index) => frequencies.includes(index));
-}
 
 function Form({ createHabit, updateHabit, getHabit }) {
   const navigate = useNavigate();
@@ -41,7 +32,7 @@ function Form({ createHabit, updateHabit, getHabit }) {
         const habit = await getHabit(habitId);
 
         if (habit) {
-          const frequency = getDays(habit.frequency);
+          const frequency = frequenciesToDays(habit.frequency);
           setHabitData({ ...habit, frequency });
         }
       };
@@ -55,7 +46,7 @@ function Form({ createHabit, updateHabit, getHabit }) {
 
     const { name, description } = habitData;
     const points = parseInt(habitData.points);
-    const frequency = getFrequencies(e.target.frequency);
+    const frequency = daysToFrequencies(e.target.frequency);
 
     if (habitId === "new") {
       await createHabit(name, description, points, frequency);

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "components/button";
 import "./index.css";
 
-export default function Card({ data, onRemove }) {
+export default function HabitCard({ data, onRemove }) {
   const navigate = useNavigate();
 
   const { habitId, name, description, points, streak } = data;

@@ -4,7 +4,7 @@ import Theme from "lib/themeManager";
 import Header from "components/header";
 import Footer from "components/footer";
 
-function SingleSetting({ icon, name, description, onClick }) {
+function SettingCard({ icon, name, description, onClick }) {
   return (
     <div className="au-card" onClick={onClick}>
       <span className="material-symbols-rounded">{icon}</span>
@@ -26,13 +26,13 @@ function Container({ getAllHabits, deleteHabit }) {
 
   return (
     <div id="settings">
-      <SingleSetting
+      <SettingCard
         icon="dark_mode"
         name="change theme"
         description="turn on or off dark mode"
         onClick={handleClickTheme}
       />
-      <SingleSetting
+      <SettingCard
         icon="delete"
         name="delete all habits"
         description="this action cannot be undone"
@@ -41,7 +41,6 @@ function Container({ getAllHabits, deleteHabit }) {
     </div>
   );
 }
-
 export default function Settings({ controllers }) {
   return (
     <>
