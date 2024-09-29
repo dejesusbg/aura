@@ -21,7 +21,7 @@ function Container({ getAllHabits, deleteHabit }) {
 
   const handleClickDelete = async () => {
     const habits = await getAllHabits();
-    habits.map((habit) => deleteHabit(habit.habit_id));
+    habits.map((habit) => deleteHabit(habit.habitId));
   };
 
   return (

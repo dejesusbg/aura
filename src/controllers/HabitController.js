@@ -9,12 +9,12 @@ class HabitController {
     return habit;
   }
 
-  static async getHabit(db, habit_id) {
-    return await Habit.getById(db, habit_id);
+  static async getHabit(db, habitId) {
+    return await Habit.getById(db, habitId);
   }
 
-  static async updateStreak(db, habit_id) {
-    const habit = await Habit.getById(db, habit_id);
+  static async updateStreak(db, habitId) {
+    const habit = await Habit.getById(db, habitId);
 
     if (habit) {
       habit.streak += 1;
@@ -26,8 +26,8 @@ class HabitController {
     throw new Error("Habit not found");
   }
 
-  static async updateHabit(db, habit_id, updatedData) {
-    const habit = await Habit.getById(db, habit_id);
+  static async updateHabit(db, habitId, updatedData) {
+    const habit = await Habit.getById(db, habitId);
 
     if (habit) {
       Object.assign(habit, updatedData);
@@ -38,8 +38,8 @@ class HabitController {
     throw new Error("Habit not found");
   }
 
-  static async deleteHabit(db, habit_id) {
-    await Habit.delete(db, habit_id);
+  static async deleteHabit(db, habitId) {
+    await Habit.delete(db, habitId);
   }
 
   static async getAllHabits(db) {

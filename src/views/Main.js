@@ -13,11 +13,11 @@ function Container({ getAllHabits, updateStreak, updateBalance }) {
     setHabits(fetchedHabits);
   };
 
-  const removeCard = async (habit_id, points) => {
-    await updateStreak(habit_id);
+  const handleRemoveCard = async (habitId, points) => {
+    await updateStreak(habitId);
     updateBalance(points);
 
-    const card = document.getElementById(habit_id);
+    const card = document.getElementById(habitId);
     if (card) {
       card.classList.add("au-card-remove");
       setTimeout(fetchHabits, 1000);
@@ -28,9 +28,8 @@ function Container({ getAllHabits, updateStreak, updateBalance }) {
     fetchHabits();
   }, [getAllHabits]);
 
-  const cards = habits
-    .filter(parseFrequency)
-    .map((item) => <Card key={item.habit_id} data={item} removeCard={removeCard} />);
+  const filteredHabits = habits.filter(parseFrequency);
+  const cards = filteredHabits.map((habit) => <Card key={habit.habitId} data={habit} onRemove={handleRemoveCard} />);
 
   const formattedDate = new Intl.DateTimeFormat("en-UK", {
     day: "numeric",
@@ -46,7 +45,7 @@ function Container({ getAllHabits, updateStreak, updateBalance }) {
   );
 }
 
-export default function Main({controllers}) {
+export default function Main({ controllers }) {
   const [balance, setBalance] = useState(0);
 
   useEffect(() => {
@@ -59,10 +58,8 @@ export default function Main({controllers}) {
     fetchBalance();
   }, [controllers]);
 
-  controllers.updateBalance = (increment) => {
-    setBalance((prev) => prev + increment);
-  };
-
+  controllers.updateBalance = (increment) => setBalance((prev) => prev + increment);
+  
   return (
     <>
       <Header balance={balance} />

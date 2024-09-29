@@ -4,18 +4,18 @@ import { useNavigate } from "react-router-dom";
 import Button from "components/button";
 import "./index.css";
 
-export default function Card({ data, removeCard }) {
+export default function Card({ data, onRemove }) {
   const navigate = useNavigate();
 
-  const { habit_id, name, description, points, streak } = data;
-  const handleEdit = () => navigate(`/edit/${habit_id}`);
-  const handleRemove = () => removeCard(habit_id, points);
+  const { habitId, name, description, points, streak } = data;
+  const handleEdit = () => navigate(`/edit/${habitId}`);
+  const handleRemove = () => onRemove(habitId, points);
   const pointsText = `${points > 0 ? "+" : ""}${points}`;
 
-  const shouldShowPointsButton = typeof removeCard === "function";
+  const shouldShowPointsButton = typeof onRemove === "function";
 
   return (
-    <div id={habit_id} className="au-card">
+    <div id={habitId} className="au-card">
       <div className="au-main-card">
         <span className="au-text-m">{name}</span>
         {description && <span className="au-text-p">{description}</span>}

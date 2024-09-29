@@ -1,6 +1,6 @@
 class Habit {
-  constructor(habit_id, name, description, points, frequency) {
-    this.habit_id = habit_id;
+  constructor(habitId, name, description, points, frequency) {
+    this.habitId = habitId;
     this.name = name;
     this.description = description;
     this.points = points;
@@ -22,22 +22,22 @@ class Habit {
     });
   }
 
-  static async getById(db, habit_id) {
+  static async getById(db, habitId) {
     return new Promise((resolve, reject) => {
       const transaction = db.transaction("habits", "readonly");
       const store = transaction.objectStore("habits");
-      const request = store.get(habit_id);
+      const request = store.get(habitId);
 
       request.onsuccess = () => resolve(request.result);
       request.onerror = (e) => reject(e);
     });
   }
 
-  static async delete(db, habit_id) {
+  static async delete(db, habitId) {
     return new Promise((resolve, reject) => {
       const transaction = db.transaction("habits", "readwrite");
       const store = transaction.objectStore("habits");
-      const request = store.delete(habit_id);
+      const request = store.delete(habitId);
 
       request.onsuccess = () => resolve(true);
       request.onerror = (e) => reject(e);

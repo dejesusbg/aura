@@ -13,7 +13,7 @@ function Container({ getAllHabits }) {
 
     const fetchData = async () => {
       const fetchedData = await habits;
-      const cards = fetchedData.map((item) => <Card key={item.habit_id} data={item} />);
+      const cards = fetchedData.map((item) => <Card key={item.habitId} data={item} />);
       setCards(cards);
     };
 

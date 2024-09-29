@@ -25,7 +25,7 @@ class MainModel {
       request.onupgradeneeded = (event) => {
         const db = event.target.result;
         if (!db.objectStoreNames.contains("habits")) {
-          db.createObjectStore("habits", { keyPath: "habit_id" });
+          db.createObjectStore("habits", { keyPath: "habitId" });
         }
       };
     });
