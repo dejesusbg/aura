@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
+<<<<<<<< HEAD:src/Main.js
 import parseFrequency from "lib/parseFrequency";
+========
+import parseFrequency from "../lib/parseFrequency";
+>>>>>>>> da1584fcb4bbcf0f174eff5143ff8f9cc567ef26:src/pages/Main.js
 
 import Card from "components/card";
 import Header from "components/header";
@@ -46,7 +50,11 @@ function Container({ getAllHabits, updateStreak, updateBalance }) {
   );
 }
 
+<<<<<<<< HEAD:src/Main.js
 export default function Main({controllers}) {
+========
+export default function Main(props) {
+>>>>>>>> da1584fcb4bbcf0f174eff5143ff8f9cc567ef26:src/pages/Main.js
   const [balance, setBalance] = useState(0);
 
   useEffect(() => {
