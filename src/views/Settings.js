@@ -1,14 +1,8 @@
 import React from "react";
 import Theme from "lib/themeManager";
 
-<<<<<<<< HEAD:src/Settings.js
 import Header from "components/header";
 import Footer from "components/footer";
-========
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import Theme from "../lib/themeManager";
->>>>>>>> da1584fcb4bbcf0f174eff5143ff8f9cc567ef26:src/pages/Settings.js
 
 function SingleSetting({ icon, name, description, onClick }) {
   return (

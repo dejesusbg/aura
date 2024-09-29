@@ -1,18 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-<<<<<<<< HEAD:src/Edit.js
-========
-
-import Button from "../components/Button";
-import InputField from "../components/InputField";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
->>>>>>>> da1584fcb4bbcf0f174eff5143ff8f9cc567ef26:src/pages/Edit.js
 
 import Button from "components/button";
-import InputField from "components/inputField";
-import Header from "components/header";
-import Footer from "components/footer";
+// import InputField from "components/inputField";
+// import Header from "components/header";
+// import Footer from "components/footer";
 
 import "styles/edit.css";
 
