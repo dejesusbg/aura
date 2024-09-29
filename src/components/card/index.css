@@ -1,0 +1,63 @@
+div.au-card {
+  overflow: hidden;
+  height: min-content;
+  margin: 0.5rem 0.25rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-surface-e4);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  gap: 1.5rem;
+}
+
+div.au-card-remove {
+  animation: zoom forwards 0.7s ease-out;
+}
+
+@keyframes zoom {
+  0% {
+    height: initial;
+    min-height: initial;
+    opacity: 1;
+    transform: scale(1);
+    transform-origin: 50% 0%;
+  }
+  50% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    height: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+div.au-card div.au-main-card {
+  margin-right: auto;
+}
+
+div.au-card div.au-main-card * {
+  margin: 0.25rem 0;
+  display: block;
+}
+
+body.light div.au-card button {
+  color: var(--color-on-secondary);
+  background-color: var(--color-secondary);
+}
+
+body.dark div.au-card button {
+  color: var(--color-on-secondary-container);
+  background-color: var(--color-secondary-container);
+}
+
+div#settings div.au-card {
+  cursor: pointer;
+}

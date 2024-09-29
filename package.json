@@ -8,7 +8,6 @@
     "build": "webpack --mode production",
     "server": "node server.js",
     "start": "start npm run watch & start npm run server"
-
   },
   "keywords": [],
   "author": "",
@@ -19,7 +18,13 @@
     "@babel/preset-env": "^7.25.4",
     "@babel/preset-react": "^7.24.7",
     "babel-loader": "^9.2.1",
+    "chroma-js": "^3.1.1",
+<<<<<<< HEAD
+    "css-loader": "^7.1.2",
+=======
+>>>>>>> da1584fcb4bbcf0f174eff5143ff8f9cc567ef26
     "express": "^4.21.0",
+    "mini-css-extract-plugin": "^2.9.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2",

@@ -1,0 +1,49 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 7.5rem;
+  height: calc(100% - 13rem);
+  padding: 3rem 1rem 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-background);
+  z-index: 1;
+  gap: 1rem;
+}
+
+header section.au-header-leading img {
+  height: 6rem;
+}
+
+header section.au-header-trailing {
+  margin-top: auto;
+  margin-right: auto;
+  padding-left: 0.5rem;
+  color: var(--color-on-tertiary-container);
+}
+
+@media screen and (max-width: 600px) {
+  header {
+    width: calc(100% - 3rem);
+    height: min-content;
+    padding: 1.5rem;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  header section.au-header-leading {
+    display: none;
+  }
+
+  header section.au-header-trailing span {
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+  }
+
+  header section.au-header-trailing span.au-text-l::after {
+    content: " points";
+  }
+}
