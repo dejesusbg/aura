@@ -30,7 +30,7 @@ export default function Header({ balance }) {
   }, [balance]);
 
   const path = window.location.pathname;
-  const name = `${path}/`;
+  const name = `/${path.split("/")[1]}/`;
 
   const displayText =
     path === "/" ? <span className="au-text-l">{displayBalance}</span> : <span className="au-text-m">{name}</span>;
