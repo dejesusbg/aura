@@ -16,6 +16,8 @@ export default function parseFrequency(habit) {
   return daysOfWeek.includes(currentDay) && (!isUpdatedToday || isCreatedToday);
 }
 
+export const weekdays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+
 export function daysToFrequencies(array) {
   const days = Array.from(array.selectedOptions).map((option) => option.value);
   return weekdays.map((day, index) => (days.includes(day) ? index : null)).join("");
