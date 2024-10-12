@@ -131,7 +131,7 @@ export default class Theme {
   }
 
   static #getPreferredColorScheme = () => {
-    window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   };
 
   static set(primary, secondary) {
