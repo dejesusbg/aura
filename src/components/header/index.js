@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import "./index.css";
+import "./header.css";
 
 export default function Header({ balance }) {
   const [displayBalance, setDisplayBalance] = useState("ツ");

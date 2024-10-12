@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import Button from "components/button";
-import "./index.css";
+import "./widget.css";
 
 function Widget({ children, onClose }) {
   return (

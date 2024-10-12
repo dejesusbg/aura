@@ -1,16 +1,16 @@
 {
-    "name": "aura",
-    "short_name": "aura",
-    "start_url": "/",
-    "display": "standalone",
-    "background_color": "#fef1e7",
-    "theme_color": "#fef1e7",
-    "icons": [
-      {
-        "src": "logo.png",
-        "sizes": "512x512",
-        "type": "image/png"
-      }
-    ]
-  }
-  
+  "name": "aura",
+  "short_name": "aura",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fef1e7",
+  "theme_color": "#fef1e7",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "version": 0.1
+}

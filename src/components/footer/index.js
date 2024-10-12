@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import Button from "components/button";
 import { EmojiWidget, TimerWidget } from "components/widget";
-import "./index.css";
+import "./footer.css";
 
 export default function Footer() {
   const navigate = useNavigate();

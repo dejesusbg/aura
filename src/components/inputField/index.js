@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./index.css";
+import "./inputField.css";
 
 export default function InputField({
   id,

@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import Button from "components/button";
-import "./index.css";
+import "./habitCard.css";
 
 export default function HabitCard({ data, onRemove }) {
   const navigate = useNavigate();

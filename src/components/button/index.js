@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import "./index.css";
+import "./button.css";
 
 export default function Button({ className = "text", type = "button", text, onClick, href }) {
   const navigate = useNavigate();
