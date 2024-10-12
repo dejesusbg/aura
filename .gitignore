@@ -1,6 +1,6 @@
 /node_modules
 /.vscode
 public/js/bundle.js
-public/css/main.css
+public/css/bundle.css
 .diff
 .hintrc

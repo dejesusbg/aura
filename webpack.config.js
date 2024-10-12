@@ -11,19 +11,14 @@ module.exports = {
 
   mode: "development",
 
-  resolve: {
-    modules: [path.resolve(__dirname, "src"), "node_modules"],
-  },
+  resolve: { modules: [path.resolve(__dirname, "src"), "node_modules"] },
 
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: { presets: ["@babel/preset-env"] },
-        },
+        use: { loader: "babel-loader", options: { presets: ["@babel/preset-env"] } },
       },
       {
         test: /\.css$/i,
@@ -31,10 +26,6 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: "css/[name].css", 
-      chunkFilename: "css/[id].css",
-    }),
-  ],
+
+  plugins: [new MiniCssExtractPlugin({ filename: "css/bundle.css" })],
 };
