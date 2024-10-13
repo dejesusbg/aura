@@ -2,7 +2,7 @@ import React, { StrictMode, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 
-import Theme from "lib/ThemeManager";
+import Theme from "md3-theme";
 
 import Main from "views/Main";
 import Edit from "views/Edit";

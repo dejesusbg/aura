@@ -1,5 +1,6 @@
 import React from "react";
-import Theme from "lib/ThemeManager";
+
+import Theme from "md3-theme";
 
 import Header from "components/Header";
 import Footer from "components/Footer";
