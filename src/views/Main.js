@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import parseFrequency from "lib/parseFrequency";
+import parseFrequency from "lib/ParseFrequency";
 
-import HabitCard from "components/habitCard";
-import Header from "components/header";
-import Footer from "components/footer";
+import HabitCard from "components/HabitCard";
+import Header from "components/Header";
+import Footer from "components/Footer";
 
 function Container({ getAllHabits, updateStreak, updateBalance }) {
   const [habits, setHabits] = useState([]);

@@ -1,8 +1,8 @@
 import React from "react";
-import Theme from "lib/themeManager";
+import Theme from "lib/ThemeManager";
 
-import Header from "components/header";
-import Footer from "components/footer";
+import Header from "components/Header";
+import Footer from "components/Footer";
 
 function SettingCard({ icon, name, description, onClick }) {
   return (

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Button from "components/button";
-import { EmojiWidget, TimerWidget } from "components/widget";
+import Button from "components/Button";
+import { EmojiWidget, TimerWidget } from "components/Widget";
 import "./footer.css";
 
 export default function Footer() {

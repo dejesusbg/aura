@@ -1,10 +1,10 @@
-import uniqueId from "lib/uniqueId";
+import uid from "lib/uid";
 
 import Habit from "models/Habit";
 
 class HabitController {
   static async createHabit(db, name, description, points, frequency) {
-    const habit = new Habit(uniqueId(), name, description, points, frequency);
+    const habit = new Habit(uid(), name, description, points, frequency);
     await Habit.save(db, habit);
     return habit;
   }

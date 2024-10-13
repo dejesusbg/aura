@@ -5,18 +5,18 @@ self.addEventListener("install", (event) => {
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll([
         "/",
-        "index.html",
-        "css/main.css",
-        "css/monet.css",
-        "css/styles.css",
-        "css/typography.css",
-        "fonts/Excon-Variable.woff2",
-        "fonts/Void-Regular.woff2",
-        "js/bundle.js",
-        "assets/logo.png",
-        "assets/favicon.ico",
-        "assets/apple-touch-icon.png",
-        "manifest.json",
+        "/index.html",
+        "/css/main.css",
+        "/css/monet.css",
+        "/css/styles.css",
+        "/css/typography.css",
+        "/fonts/Excon-Variable.woff2",
+        "/fonts/Void-Regular.woff2",
+        "/js/bundle.js",
+        "/assets/logo.png",
+        "/assets/favicon.ico",
+        "/assets/apple-touch-icon.png",
+        "/manifest.json",
       ]);
     })
   );

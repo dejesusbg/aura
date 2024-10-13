@@ -38,7 +38,7 @@ export default function Header({ balance }) {
   return (
     <header>
       <section className="au-header-leading">
-        <img src="assets/logo.png" alt="logo" draggable="false" />
+        <img src="/assets/logo.png" alt="logo" draggable="false" />
       </section>
       <section className="au-header-trailing">{displayText}</section>
     </header>

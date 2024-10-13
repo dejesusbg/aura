@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-import HabitCard from "components/habitCard";
-import Header from "components/header";
-import Footer from "components/footer";
+import HabitCard from "components/HabitCard";
+import Header from "components/Header";
+import Footer from "components/Footer";
 
 function Container({ getAllHabits }) {
   const [cards, setCards] = useState([]);

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { weekdays, daysToFrequencies, frequenciesToDays } from "lib/parseFrequency";
+import { weekdays, daysToFrequencies, frequenciesToDays } from "lib/ParseFrequency";
 
-import Button from "components/button";
-import InputField from "components/inputField";
-import Header from "components/header";
-import Footer from "components/footer";
-import "styles/edit.css";
+import Button from "components/Button";
+import InputField from "components/InputField";
+import Header from "components/Header";
+import Footer from "components/Footer";
+import "./edit.css";
 
 function Form({ createHabit, updateHabit, getHabit }) {
   const navigate = useNavigate();
