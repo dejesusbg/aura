@@ -1,6 +1,6 @@
 import React from "react";
 
-import Theme from "palette-ui";
+import Theme from "monet-css";
 
 import Header from "components/Header";
 import Footer from "components/Footer";

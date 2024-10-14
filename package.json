@@ -22,7 +22,7 @@
     "css-loader": "^7.1.2",
     "express": "^4.21.0",
     "mini-css-extract-plugin": "^2.9.1",
-    "palette-ui": "github:dejesusbg5/palette-ui",
+    "monet-css": "github:dejesusbg5/monet",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2",
