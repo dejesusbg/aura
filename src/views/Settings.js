@@ -1,6 +1,6 @@
 import React from "react";
 
-import Theme from "md3-theme";
+import Theme from "palette-ui";
 
 import Header from "components/Header";
 import Footer from "components/Footer";
