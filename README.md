@@ -19,24 +19,26 @@
 ### Installation
 
 1. Clone the repository:
-    ```bash
-    git clone https://github.com/dejesusbg5/aura.git
-    ```
+   ```bash
+   git clone https://github.com/dejesusbg/aura.git
+   ```
 2. Navigate to the project directory:
-    ```bash
-    cd aura
-    ```
+   ```bash
+   cd aura
+   ```
 3. Install dependencies:
-    ```bash
-    npm install
-    ```
+   ```bash
+   npm install
+   ```
 
 ### Running the Application
 
 Start the development server:
+
 ```bash
 npm start
 ```
+
 The application should now be running and you can check it in `http://localhost:8080`.
 
 ## Deployment
