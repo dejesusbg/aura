@@ -2,20 +2,13 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Button from "components/Button";
-import { EmojiWidget, TimerWidget } from "components/Widget";
 import "./footer.css";
 
 export default function Footer() {
   const navigate = useNavigate();
-
-  const [isActiveWidget, setActiveWidget] = useState(null);
   const path = window.location.pathname;
 
-  const actions = [
-    { text: "add", handleClick: () => navigate("/edit/new") },
-    { text: "timer", handleClick: () => setActiveWidget("timer") },
-    { text: "spa", handleClick: () => setActiveWidget("spa") },
-  ];
+  const actions = [{ text: "add", handleClick: () => navigate("/edit/new") }];
 
   const navigation = [
     { text: "home", href: "/" },
@@ -27,7 +20,6 @@ export default function Footer() {
   const navButtons = navigation.filter((nav) => nav.href !== path);
 
   const handleClickTitle = () => navigate("/home");
-  const handleCloseWidget = () => setActiveWidget(null);
 
   return (
     <>
@@ -36,21 +28,12 @@ export default function Footer() {
           auraby
         </span>
         <div id="au-footer-actions">
-          {isActiveWidget ? (
-            <>
-              {isActiveWidget === "timer" && <TimerWidget onClose={handleCloseWidget} />}
-              {isActiveWidget === "spa" && <EmojiWidget onClose={handleCloseWidget} />}
-            </>
-          ) : (
-            <>
-              {actButtons.map(({ text, handleClick }) => (
-                <Button key={text} className="icon" text={text} onClick={handleClick} />
-              ))}
-              {navButtons.map(({ text, href }) => (
-                <Button key={text} className="icon" text={text} href={href} />
-              ))}
-            </>
-          )}
+          {actButtons.map(({ text, handleClick }) => (
+            <Button key={text} className="icon" text={text} onClick={handleClick} />
+          ))}
+          {navButtons.map(({ text, href }) => (
+            <Button key={text} className="icon" text={text} href={href} />
+          ))}
         </div>
       </footer>
     </>
